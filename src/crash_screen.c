@@ -333,7 +333,7 @@ void crash_screen_init(void) {
 void crash_screen_disp_expansion(void)
 {
     osWritebackDCacheAll();
-    crash_screen_printf(94, 140, "Expansion Pak Required");
+    crash_screen_printf((SCREEN_WIDTH/2)-66, (SCREEN_HEIGHT/2)-4, "Expansion Pak Required");
     osViBlack(0);
     osViRepeatLine(0);
     osViSwapBuffer(gCrashScreen.frameBuf);

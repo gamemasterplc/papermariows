@@ -123,7 +123,7 @@ Gfx D_8014E9A8[] = {
     gsDPSetTextureLUT(G_TT_NONE),
     gsDPSetTextureDetail(G_TD_CLAMP),
     gsDPSetTextureConvert(G_TC_FILT),
-    gsDPFillRectangle(0, 0, 320, 240),
+    gsDPFillRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT),
     gsDPSetColorDither(G_CD_DISABLE),
     gsDPPipeSync(),
     gsDPSetDepthSource(G_ZS_PIXEL),
@@ -236,7 +236,7 @@ void _render_transition_stencil(u8 stencilType, f32 progress, ScreenOverlay* ove
             return;
     }
 
-    guOrtho(&matrixStack[gMatrixListPos], 0.0f, 320.0f, 0.0f, 240.0f, -1000.0f, 1000.0f, 1.0f);
+    guOrtho(&matrixStack[gMatrixListPos], 0.0f, SCREEN_WIDTH, 0.0f, SCREEN_HEIGHT, -1000.0f, 1000.0f, 1.0f);
     gSPMatrix(gMainGfxPos++, &matrixStack[gMatrixListPos++], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
     switch (stencilType) {
@@ -590,7 +590,7 @@ s16 update_exit_map_screen_overlay(s16* progress) {
             break;
         case TRANSITION_SLOW_BLUR_MOTION:
             set_screen_overlay_center(SCREEN_LAYER_FRONT, 0, 15, 28);
-            set_screen_overlay_center(SCREEN_LAYER_FRONT, 1, 305, 156);
+            set_screen_overlay_center(SCREEN_LAYER_FRONT, 1, SCREEN_WIDTH-15, 156);
             set_screen_overlay_params_front(OVERLAY_BLUR, 255.0f);
             *progress = 255;
             return 1;
@@ -672,7 +672,7 @@ s16 update_enter_map_screen_overlay(s16* progress) {
             break;
         case TRANSITION_SLOW_BLUR_MOTION:
             set_screen_overlay_center(SCREEN_LAYER_FRONT, 0, 15, 28);
-            set_screen_overlay_center(SCREEN_LAYER_FRONT, 1, 305, 156);
+            set_screen_overlay_center(SCREEN_LAYER_FRONT, 1, SCREEN_WIDTH-15, 156);
             set_screen_overlay_params_front(OVERLAY_BLUR, *progress);
             fadeRate = VERY_SLOW_FADE_RATE;
             break;

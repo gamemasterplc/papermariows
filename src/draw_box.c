@@ -316,8 +316,8 @@ s32 gBoxQuadIndex = 0;
 
 Vp gBoxViewport = {
     .vp = {
-        .vscale = { 640, 480, 511, 0 },
-        .vtrans = { 640, 480, 511, 0 }
+        .vscale = { ((SCREEN_WIDTH/2)*4), ((SCREEN_HEIGHT/2)*4), 511, 0 },
+        .vtrans = { ((SCREEN_WIDTH/2)*4), ((SCREEN_HEIGHT/2)*4), 511, 0 }
     }
 };
 
@@ -459,7 +459,7 @@ s32 draw_box(s32 flags, WindowStyle windowStyle, s32 posX, s32 posY, s32 posZ, s
 
         if (quads != NULL) {
             gSPViewport(gMainGfxPos++, &gBoxViewport);
-            guFrustumF(mtx1, -80.0f, 80.0f, 60.0f, -60.0f, 160.0f, 480.0f, 1.0f);
+            guFrustumF(mtx1, -(SCREEN_WIDTH/4), (SCREEN_WIDTH/4), 60.0f, -60.0f, 160.0f, 480.0f, 1.0f);
             guMtxF2L(mtx1, &gDisplayContext->matrixStack[gMatrixListPos]);
             sp154 = &gDisplayContext->matrixStack[gMatrixListPos];
             gSPMatrix(gMainGfxPos++, &gDisplayContext->matrixStack[gMatrixListPos++], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
@@ -480,7 +480,7 @@ s32 draw_box(s32 flags, WindowStyle windowStyle, s32 posX, s32 posY, s32 posZ, s
                     }
                 }
             }
-            guTranslateF(mtx2, -160.0f, -120.0f, -320.0f);
+            guTranslateF(mtx2, -(SCREEN_WIDTH/2), -(SCREEN_HEIGHT/2), -320.0f);
             guMtxCatF(mtx1, mtx2, mtx1);
             gSPClearGeometryMode(gMainGfxPos++, G_CULL_BOTH | G_LIGHTING);
             if (flags & DRAW_FLAG_CULL_BACK) {

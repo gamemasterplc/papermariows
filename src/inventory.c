@@ -744,7 +744,7 @@ void update_status_bar(void) {
     x = statusBar->drawPosX;
     y = statusBar->drawPosY;
     draw_box(0, WINDOW_STYLE_5, x,       y, 0, 174, 35, 255, 0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, NULL, NULL, NULL, SCREEN_WIDTH, SCREEN_HEIGHT, NULL);
-    draw_box(0, WINDOW_STYLE_6, x + 174, y, 0, 122, 25, 255, 0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, NULL, NULL, NULL, SCREEN_WIDTH, SCREEN_HEIGHT, NULL);
+    draw_box(0, WINDOW_STYLE_6, x + 174, y, 0, SCREEN_WIDTH-198, 25, 255, 0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, NULL, NULL, NULL, SCREEN_WIDTH, SCREEN_HEIGHT, NULL);
 
     if (statusBar->hpBlinkTimeLeft > 0) {
         statusBar->hpBlinkTimeLeft--;
@@ -838,18 +838,18 @@ void update_status_bar(void) {
 
     if (showStat) {
         id = statusBar->spIconHID;
-        x = statusBar->drawPosX + 195;
+        x = statusBar->drawPosX + (SCREEN_WIDTH-125);
         y = statusBar->drawPosY + 14;
         hud_element_set_render_pos(id, x, y);
         hud_element_draw_next(id);
 
         id = statusBar->spShineHID;
-        x = statusBar->drawPosX + 195;
+        x = statusBar->drawPosX + (SCREEN_WIDTH-125);
         y = statusBar->drawPosY + 9;
         hud_element_set_render_pos(id, x, y);
         hud_element_draw_next(id);
 
-        x = statusBar->drawPosX + 200;
+        x = statusBar->drawPosX + (SCREEN_WIDTH-120);
         y = statusBar->drawPosY + 8;
         status_bar_draw_number(statusBar->spTimesHID, x, y, playerData->starPoints, 2);
     }
@@ -875,18 +875,18 @@ void update_status_bar(void) {
 
     if (showStat) {
         id = statusBar->coinIconHID;
-        x = statusBar->drawPosX + 244;
+        x = statusBar->drawPosX + (SCREEN_WIDTH-76);
         y = statusBar->drawPosY + 14;
         hud_element_set_render_pos(id, x, y);
         hud_element_draw_next(id);
 
         id = statusBar->coinSparkleHID;
-        x = statusBar->drawPosX + 244;
+        x = statusBar->drawPosX + (SCREEN_WIDTH-76);
         y = statusBar->drawPosY + 14;
         hud_element_set_render_pos(id, x, y);
         hud_element_draw_next(id);
 
-        x = statusBar->drawPosX + 247;
+        x = statusBar->drawPosX + (SCREEN_WIDTH-73);
         y = statusBar->drawPosY + 8;
         status_bar_draw_number(statusBar->coinTimesHID, x, y, statusBar->displayCoins, 3);
     }

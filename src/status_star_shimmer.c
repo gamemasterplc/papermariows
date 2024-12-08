@@ -5,8 +5,8 @@ INCLUDE_IMG("ui/status/shimmer_particle.png", ui_status_shimmer_particle_png);
 
 Vp ShimmerViewport = {
     .vp = {
-        .vscale = { 640, 480, 511, 0 },
-        .vtrans = { 640, 480, 511, 0 }
+        .vscale = { ((SCREEN_WIDTH/2)*4), ((SCREEN_HEIGHT/2)*4), 511, 0 },
+        .vtrans = { ((SCREEN_WIDTH/2)*4), ((SCREEN_HEIGHT/2)*4), 511, 0 }
     }
 };
 

@@ -313,6 +313,8 @@ void gfx_draw_background(void) {
     s32 backgroundMinY;
     s32 backgroundMaxY;
     s32 viewportStartX;
+    s32 numSlices;
+    s32 remainder;
     s32 i;
     s32 a = SCREEN_COPY_TILE_HEIGHT << 2;
 
@@ -368,8 +370,8 @@ void gfx_draw_background(void) {
             gDPSetCombineMode(gMainGfxPos++, PM_CC_43, PM_CC_44);
             gDPSetPrimColor(gMainGfxPos++, 0, 0, 40, 40, 40, gPauseBackgroundFade);
             gDPSetTextureFilter(gMainGfxPos++, G_TF_POINT);
-
-            for (i = 0; i < 40; i++) {
+            numSlices = SCREEN_HEIGHT/SCREEN_COPY_TILE_HEIGHT;
+            for (i = 0; i < SCREEN_HEIGHT/SCREEN_COPY_TILE_HEIGHT; i++) {
                 gDPLoadTextureTile(gMainGfxPos++, nuGfxZBuffer + (i * SCREEN_WIDTH * SCREEN_COPY_TILE_HEIGHT), G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH,
                                    SCREEN_HEIGHT, 0, 0, SCREEN_WIDTH - 1, SCREEN_COPY_TILE_HEIGHT - 1, 0, G_TX_NOMIRROR | G_TX_WRAP,
                                    G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -378,6 +380,22 @@ void gfx_draw_background(void) {
                 gSPTextureRectangle(gMainGfxPos++,
                                     // ulx, uly, lrx, lry
                                     0 << 2, i * a, SCREEN_WIDTH << 2, a + (i * (SCREEN_COPY_TILE_HEIGHT << 2)),
+                                    // tile
+                                    G_TX_RENDERTILE,
+                                    // s, t, dsdx, dtdy
+                                    -1 << 5, 0 << 5, 1 << 10, 1 << 10);
+                gDPPipeSync(gMainGfxPos++);
+            }
+            remainder = SCREEN_HEIGHT%SCREEN_COPY_TILE_HEIGHT;
+            if(remainder) {
+                gDPLoadTextureTile(gMainGfxPos++, nuGfxZBuffer + (numSlices * SCREEN_WIDTH * SCREEN_COPY_TILE_HEIGHT), G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH,
+                                   SCREEN_HEIGHT, 0, 0, SCREEN_WIDTH - 1, remainder - 1, 0, G_TX_NOMIRROR | G_TX_WRAP,
+                                   G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                /// @bug Due to the previous issue with the incorrect second cycle combiner, the devs added a 1-pixel offset to texture coordinates
+                /// in this texrect to compensate for the combiner error.
+                gSPTextureRectangle(gMainGfxPos++,
+                                    // ulx, uly, lrx, lry
+                                    0 << 2, numSlices * a, SCREEN_WIDTH << 2, a + (numSlices * (remainder << 2)),
                                     // tile
                                     G_TX_RENDERTILE,
                                     // s, t, dsdx, dtdy
