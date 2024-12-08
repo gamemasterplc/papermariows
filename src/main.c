@@ -45,6 +45,28 @@ extern IMG_BIN ResetTilesImg[];
 u16* ResetFrameBufferArray;
 u16* nuGfxZBuffer;
 
+static OSViMode viMode;
+
+void crash_screen_disp_expansion(void);
+
+void vi_disp_size_set(OSViMode *mode, int width, int height){
+    mode->comRegs.width  = width;
+    mode->comRegs.xScale = ((width * 512) / 320);
+    if (height > 240) {
+        mode->comRegs.ctrl |= 0x40;
+        mode->fldRegs[0].origin = (width * 2);
+        mode->fldRegs[1].origin = (width * 4);
+        mode->fldRegs[0].yScale = (0x2000000 | ((height * 1024) / 240));
+        mode->fldRegs[1].yScale = (0x2000000 | ((height * 1024) / 240));
+        mode->fldRegs[0].vStart = (mode->fldRegs[1].vStart - 0x20002);
+    } else {
+        mode->fldRegs[0].origin = (width * 2);
+        mode->fldRegs[1].origin = (width * 4);
+        mode->fldRegs[0].yScale = ((height * 1024) / 240);
+        mode->fldRegs[1].yScale = ((height * 1024) / 240);
+    }
+}
+
 void boot_main(void* data) {
 #if VERSION_JP
     if (osTvType == OS_TV_NTSC) {
@@ -66,24 +88,31 @@ void boot_main(void* data) {
 
     nuGfxDisplayOff();
 #else // not VERSION_JP
+
     if (osTvType == OS_TV_NTSC) {
-        osViSetMode(&osViModeNtscLan1);
-        osViSetSpecialFeatures(OS_VI_GAMMA_OFF | OS_VI_GAMMA_DITHER_OFF | OS_VI_DIVOT_ON | OS_VI_DITHER_FILTER_ON);
+        viMode = osViModeNtscLan1;
     } else if (osTvType == OS_TV_MPAL) {
-        osViSetMode(&osViModeMpalLan1);
-        osViSetSpecialFeatures(OS_VI_GAMMA_OFF | OS_VI_GAMMA_DITHER_OFF | OS_VI_DIVOT_ON | OS_VI_DITHER_FILTER_ON);
+        viMode = osViModeMpalLan1;
     } else {
         PANIC();
     }
-
+    vi_disp_size_set(&viMode, SCREEN_WIDTH, SCREEN_HEIGHT);
+    osViSetMode(&viMode);
+    osViSetSpecialFeatures(OS_VI_GAMMA_OFF | OS_VI_GAMMA_DITHER_OFF | OS_VI_DIVOT_ON | OS_VI_DITHER_FILTER_ON);
     nuGfxDisplayOff();
     crash_screen_init();
+    if(osMemSize < 0x700000) {
+        crash_screen_disp_expansion();
+    }
 #endif
 
 #if !VERSION_IQUE && !VERSION_PAL
     is_debug_init();
 #endif
     nuGfxInit();
+    #if FRAME_BUFFER_SIZE > 0x25800
+    nuGfxZBuffer = (void *)0x80120000;
+    #endif
     gGameStatusPtr->contBitPattern = nuContInit();
 
 #if !VERSION_IQUE

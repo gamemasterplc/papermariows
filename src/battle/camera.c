@@ -138,7 +138,7 @@ EvtScript EVS_BattleCam_Reset = {
 
 EvtScript EVS_OnBattleInit = {
     Call(SetCamPerspective, CAM_BATTLE, CAM_UPDATE_NO_INTERP, 25, 16, 1024)
-    Call(SetCamViewport, CAM_BATTLE, 12, 20, 296, 200)
+    Call(SetCamViewport, CAM_BATTLE, 12, 20, SCREEN_WIDTH-24, SCREEN_HEIGHT-40)
     Call(SetCamBGColor, CAM_BATTLE, 0, 0, 0)
     Call(SetCamEnabled, CAM_BATTLE, TRUE)
     Wait(1)

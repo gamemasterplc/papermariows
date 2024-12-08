@@ -246,8 +246,12 @@ void appendGfx_background_texture(void) {
                                                  (bgXOffset + bgMinX - 1) * 4, (lineHeight * i + lineHeight - 1 + bgMinY) * 4,
                                                  G_TX_RENDERTILE, (bgMaxX - bgXOffset) * 32, 0, 4096, 1024);
             gSPTextureRectangle(gMainGfxPos++, (bgXOffset + bgMinX) * 4, (lineHeight * i + bgMinY) * 4,
-                                                 (bgMaxX + bgMinX - 1) * 4, (lineHeight * i + lineHeight - 1 + bgMinY) * 4,
+                                                 (bgXOffset + bgMaxX + bgMinX - 1) * 4, (lineHeight * i + lineHeight - 1 + bgMinY) * 4,
                                                  G_TX_RENDERTILE, 0, 0, 4096, 1024);
+            gSPTextureRectangle(gMainGfxPos++, (bgXOffset + bgMaxX + bgMinX) * 4, (lineHeight * i + bgMinY) * 4,
+                                                 (bgXOffset + (bgMaxX*2) + bgMinX - 1) * 4, (lineHeight * i + lineHeight - 1 + bgMinY) * 4,
+                                                 G_TX_RENDERTILE, 0, 0, 4096, 1024);
+            gDPPipeSync(gMainGfxPos++);
         }
         if (extraHeight != 0) {
             texOffsetY = gBackroundTextureYOffset + lineHeight * i;
@@ -262,8 +266,12 @@ void appendGfx_background_texture(void) {
                                                  (bgXOffset + bgMinX - 1) * 4, (bgMaxY - 1 + bgMinY) * 4,
                                                  G_TX_RENDERTILE, (bgMaxX - bgXOffset) * 32, 0, 4096, 1024);
             gSPTextureRectangle(gMainGfxPos++, (bgXOffset + bgMinX) * 4, (lineHeight * i + bgMinY) * 4,
-                                                 (bgMaxX + bgMinX - 1) * 4, (bgMaxY - 1 + bgMinY) * 4,
+                                                 (bgXOffset + bgMaxX + bgMinX - 1) * 4, (bgMaxY - 1 + bgMinY) * 4,
                                                  G_TX_RENDERTILE, 0, 0, 4096, 1024);
+            gSPTextureRectangle(gMainGfxPos++, (bgXOffset + bgMaxX + bgMinX) * 4, (lineHeight * i + bgMinY) * 4,
+                                                 (bgXOffset + (bgMaxX*2) + bgMinX - 1) * 4, (bgMaxY - 1 + bgMinY) * 4,
+                                                 G_TX_RENDERTILE, 0, 0, 4096, 1024);
+            gDPPipeSync(gMainGfxPos++);
         }
     } else {
         lineHeight = 6;

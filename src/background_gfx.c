@@ -459,6 +459,11 @@ void gfx_draw_background(void) {
             if (!(gGameStatusPtr->backgroundFlags & BACKGROUND_FLAG_TEXTURE)) {
                 gDPFillRectangle(gMainGfxPos++, backgroundMinX, backgroundMinY, backgroundMaxX - 1, backgroundMaxY - 1);
             } else {
+                viewportStartX = camera->viewportStartX;
+                backgroundMinX = viewportStartX;
+                backgroundMaxX = viewportStartX + camera->viewportW;
+                backgroundMinY = camera->viewportStartY;
+                backgroundMaxY = camera->viewportStartY + camera->viewportH;
                 appendGfx_background_texture();
             }
 

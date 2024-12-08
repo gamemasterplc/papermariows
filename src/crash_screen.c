@@ -330,6 +330,16 @@ void crash_screen_init(void) {
     osStartThread(&gCrashScreen.thread);
 }
 
+void crash_screen_disp_expansion(void)
+{
+    osWritebackDCacheAll();
+    crash_screen_printf(94, 140, "Expansion Pak Required");
+    osViBlack(0);
+    osViRepeatLine(0);
+    osViSwapBuffer(gCrashScreen.frameBuf);
+    while(1);
+}
+
 // unused
 void crash_screen_printf_with_bg(s16 x, s16 y, const char* fmt, ...) {
     u8* ptr;

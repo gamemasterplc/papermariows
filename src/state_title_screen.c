@@ -637,7 +637,7 @@ void title_screen_draw_menu(void) {
     gDPLoadTextureBlock(gMainGfxPos++, TitleScreen_ImgList_PressStart, G_IM_FMT_IA, G_IM_SIZ_8b, 128, VAR_1, 0,
                         G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
                         G_TX_NOLOD);
-    gSPTextureRectangle(gMainGfxPos++, 384, 548, 896, VAR_2, G_TX_RENDERTILE, 0, 0, 0x0400, 0x0400);
+    gSPTextureRectangle(gMainGfxPos++, ((SCREEN_WIDTH/2)-64)*4, 548, ((SCREEN_WIDTH/2)+64)*4, VAR_2, G_TX_RENDERTILE, 0, 0, 0x0400, 0x0400);
 #endif
     gDPPipeSync(gMainGfxPos++);
 }
@@ -694,7 +694,7 @@ void title_screen_draw_copyright(f32 moveAlpha) {
                            COPYRIGHT_WIDTH, 32, 0, 0, 143, LTT_LRT, 0,
                            G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
                            G_TX_NOLOD);
-        gSPTextureRectangle(gMainGfxPos++, 356, YL_BASE + (RECT_SIZE * i), 932, YH_BASE + (RECT_SIZE * i),
+        gSPTextureRectangle(gMainGfxPos++, ((SCREEN_WIDTH/2)-71)*4, YL_BASE + (RECT_SIZE * i), ((SCREEN_WIDTH/2)+73)*4, YH_BASE + (RECT_SIZE * i),
                             G_TX_RENDERTILE, 0, 0, 0x0400, 0x0400);
     }
 #endif

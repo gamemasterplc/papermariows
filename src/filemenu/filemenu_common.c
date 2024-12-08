@@ -186,7 +186,7 @@ void filemenu_draw_rect(s32 ulx, s32 uly, s32 lrx, s32 lry, s32 tileIdx, s32 uls
     if (ulx <= -2688 || uly <= -2688 || lrx <= 0 || lry <= 0) {
         return;
     }
-    if (ulx >= 1280 || uly >= 960 || lrx >= 2688 || lry >= 2688) {
+    if (ulx >= (SCREEN_WIDTH*4) || uly >= (SCREEN_HEIGHT*4) || lrx >= 2688 || lry >= 2688) {
         return;
     }
     gSPScisTextureRectangle(gMainGfxPos++, ulx, uly, lrx, lry, tileIdx, uls, ult, dsdx, dtdy);

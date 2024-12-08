@@ -275,7 +275,7 @@ void appendGfx_intro_logos(void) {
                 gDPLoadTextureTile(gMainGfxPos++, gLogosImage1 + i * 0x1000, G_IM_FMT_RGBA, G_IM_SIZ_16b, 128, 112,
                                    0, 0, 127, 15, 0,
                                    G_TX_WRAP, G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-                gSPTextureRectangle(gMainGfxPos++, 96 * 4, (64 + i * 16) * 4, 224 * 4, (80 + i * 16) * 4, G_TX_RENDERTILE, 0, 0, 1024, 1024);
+                gSPTextureRectangle(gMainGfxPos++, ((SCREEN_WIDTH/2)-64) * 4, (64 + i * 16) * 4, ((SCREEN_WIDTH/2)+64) * 4, (80 + i * 16) * 4, G_TX_RENDERTILE, 0, 0, 1024, 1024);
                 gDPPipeSync(gMainGfxPos++);
             }
             break;
@@ -296,8 +296,8 @@ void appendGfx_intro_logos(void) {
                                    G_TX_WRAP, G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 gSPTextureRectangle(
                         gMainGfxPos++,
-                        32 * 4, (LOGO_1_Y + i * 8) * 4,
-                        288 * 4, (LOGO_1_Y + 8 + i * 8) * 4,
+                        ((SCREEN_WIDTH/2)-128) * 4, (LOGO_1_Y + i * 8) * 4,
+                        ((SCREEN_WIDTH/2)+128) * 4, (LOGO_1_Y + 8 + i * 8) * 4,
                         G_TX_RENDERTILE, 0, 0, 1024, 1024);
                 gDPPipeSync(gMainGfxPos++);
             }
@@ -314,8 +314,8 @@ void appendGfx_intro_logos(void) {
                                    0, 0, 255, 7, 0,
                                    G_TX_WRAP, G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 gSPTextureRectangle(gMainGfxPos++,
-                                    32 * 4, (LOGO_2_Y + i * 8) * 4,
-                                    288 * 4, (LOGO_2_Y + 8 + i * 8) * 4,
+                                    ((SCREEN_WIDTH/2)-128) * 4, (LOGO_2_Y + i * 8) * 4,
+                                    ((SCREEN_WIDTH/2)+128) * 4, (LOGO_2_Y + 8 + i * 8) * 4,
                                     G_TX_RENDERTILE, 0, 0, 1024, 1024);
                 gDPPipeSync(gMainGfxPos++);
             }

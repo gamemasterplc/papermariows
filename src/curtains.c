@@ -163,7 +163,7 @@ Gfx TheaterInitGfx[] = {
     gsDPSetTextureConvert(G_TC_FILT),
     gsDPSetCombineKey(G_CK_NONE),
     gsDPSetAlphaCompare(G_AC_NONE),
-    gsDPSetScissor(G_SC_NON_INTERLACE, 0, 0, 320, 240),
+    gsDPSetScissor(G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT),
     gsDPSetColorDither(G_CD_MAGICSQ),
     gsDPSetAlphaDither(G_AD_PATTERN),
     gsSPClearGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN |
@@ -202,7 +202,7 @@ Gfx NoControllerSetupTexGfx[] = {
 };
 
 Gfx NoControllerGfx[] = {
-    gsSPTextureRectangle(0x0180, 0x0260, 0x0380, 0x02E0, G_TX_RENDERTILE, 0, 0, 0x0400, 0x0400),
+    gsSPTextureRectangle(((SCREEN_WIDTH/2)-64)*4, 0x0260, ((SCREEN_WIDTH/2)+64)*4, 0x02E0, G_TX_RENDERTILE, 0, 0, 0x0400, 0x0400),
     gsDPPipeSync(),
     gsSPEndDisplayList(),
 };

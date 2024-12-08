@@ -216,7 +216,7 @@ void load_map_by_IDs(s16 areaID, s16 mapID, s16 loadType) {
     if (mapSettings->background != NULL) {
         set_background(mapSettings->background);
     } else {
-        set_background_size(296, 200, 12, 20);
+        set_background_size(SCREEN_WIDTH-24, SCREEN_HEIGHT-40, 12, 20);
     }
 
     gCurrentCameraID = CAM_DEFAULT;
@@ -226,7 +226,7 @@ void load_map_by_IDs(s16 areaID, s16 mapID, s16 loadType) {
     gCameras[CAM_HUD].flags |= CAMERA_FLAG_DISABLED;
 
     if (gGameStatusPtr->introPart == INTRO_PART_NONE) {
-        set_cam_viewport(CAM_DEFAULT, 12, 20, 296, 200);
+        set_cam_viewport(CAM_DEFAULT, 12, 20, SCREEN_WIDTH-24, SCREEN_HEIGHT-40);
     } else {
         set_cam_viewport(CAM_DEFAULT, 29, 28, 262, 162);
     }
