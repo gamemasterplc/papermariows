@@ -228,7 +228,7 @@ void load_map_by_IDs(s16 areaID, s16 mapID, s16 loadType) {
     if (gGameStatusPtr->introPart == INTRO_PART_NONE) {
         set_cam_viewport(CAM_DEFAULT, 12, 20, SCREEN_WIDTH-24, SCREEN_HEIGHT-40);
     } else {
-        set_cam_viewport(CAM_DEFAULT, 29, 28, 262, 162);
+        set_cam_viewport(CAM_DEFAULT, ((SCREEN_WIDTH*29)/320), 28, ((SCREEN_WIDTH*262)/320), 162);
     }
 
     initialize_status_bar();

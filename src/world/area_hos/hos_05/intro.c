@@ -1327,7 +1327,7 @@ Gfx N(gfx_setup_story_viewport)[] = {
     gsDPSetTexturePersp(G_TP_NONE),
     gsDPSetTextureLUT(G_TT_RGBA16),
     gsDPSetCombineMode(PM_CC_10, PM_CC_10),
-    gsDPSetScissor(G_SC_NON_INTERLACE, 29, 28, 291, 190),
+    gsDPSetScissor(G_SC_NON_INTERLACE, ((SCREEN_WIDTH*29)/320), 28, ((SCREEN_WIDTH*291)/320), 190),
     gsDPSetColorDither(G_CD_DISABLE),
     gsDPSetAlphaDither(G_AD_PATTERN),
     gsDPSetRenderMode(CVG_DST_FULL | ZMODE_OPA | FORCE_BL | G_RM_PASS, CVG_DST_FULL | ZMODE_OPA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_0, G_BL_CLR_IN, G_BL_1)),
@@ -1410,15 +1410,15 @@ void N(appendGfx_image_ci)(s32 baseX, s32 baseY, IMG_PTR img, PAL_PTR pal) {
         gDPLoadTextureTile(gMainGfxPos++, img, G_IM_FMT_CI, G_IM_SIZ_8b, 264, 162,
                            0, i * 7, 263, i * 7 + 7 - 1, 0,
                            G_TX_WRAP, G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-        gSPScisTextureRectangle(gMainGfxPos++, baseX * 4, (baseY + i * 7) * 4, (baseX + 264) * 4, (baseY + i * 7 + 7) * 4,
-                                G_TX_RENDERTILE, 0, (i * 7) << 5, 1024, 1024);
+        gSPScisTextureRectangle(gMainGfxPos++, baseX * 4, (baseY + i * 7) * 4, (baseX + ((SCREEN_WIDTH*264)/320)) * 4, (baseY + i * 7 + 7) * 4,
+                                G_TX_RENDERTILE, 0, (i * 7) << 5, 327680/SCREEN_WIDTH, 1024);
     }
     if (m != 0) {
         gDPLoadTextureTile(gMainGfxPos++, img, G_IM_FMT_CI, G_IM_SIZ_8b, 264, 0,
                            0, i * 7, 263, i * 7 + m - 1, 0,
                            G_TX_WRAP, G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-        gSPScisTextureRectangle(gMainGfxPos++, baseX * 4, (baseY + i * 7) * 4, (baseX + 264) * 4, (baseY + i * 7 + m) * 4,
-                                G_TX_RENDERTILE, 0, (i * 7) << 5, 1024, 1024);
+        gSPScisTextureRectangle(gMainGfxPos++, baseX * 4, (baseY + i * 7) * 4, (baseX + ((SCREEN_WIDTH*264)/320)) * 4, (baseY + i * 7 + m) * 4,
+                                G_TX_RENDERTILE, 0, (i * 7) << 5, 327680/SCREEN_WIDTH, 1024);
     }
     gDPPipeSync(gMainGfxPos++);
 }
@@ -1429,7 +1429,8 @@ void N(worker_draw_story_graphics)(void) {
     s32 vpY = camera->viewportStartY;
     u8 overlayType;
     f32 overlayAlpha;
-
+    s32 frontX, backX;
+    
     N(draw_background_tape)();
 
     gSPDisplayList(gMainGfxPos++, N(gfx_setup_story_viewport));
@@ -1444,29 +1445,33 @@ void N(worker_draw_story_graphics)(void) {
         gDPSetCombineMode(gMainGfxPos++, PM_CC_43, PM_CC_43);
         gDPSetPrimColor(gMainGfxPos++, 0, 0, 208, 208, 208, (s32) overlayAlpha);
     }
-
+    
+    frontX = N(StoryGraphicsPtr)->frontImgPosX;
+    backX = N(StoryGraphicsPtr)->backImgPosX;
+    frontX = ((frontX*SCREEN_WIDTH)/320);
+    backX = ((backX*SCREEN_WIDTH)/320);
     if (!N(StoryGraphicsPtr)->flipOrder) {
         N(appendGfx_image_ci)(
-            vpX + N(StoryGraphicsPtr)->backImgPosX,
+            vpX + backX,
             vpY + N(StoryGraphicsPtr)->backImgPosY,
             N(StoryGraphicsPtr)->imgBack,
             N(StoryGraphicsPtr)->palBack
         );
         N(appendGfx_image_ci)(
-            vpX + N(StoryGraphicsPtr)->frontImgPosX,
+            vpX + frontX,
             vpY + N(StoryGraphicsPtr)->frontImgPosY,
             N(StoryGraphicsPtr)->imgFront,
             N(StoryGraphicsPtr)->palFront
         );
     } else {
         N(appendGfx_image_ci)(
-            vpX + N(StoryGraphicsPtr)->frontImgPosX,
+            vpX + frontX,
             vpY + N(StoryGraphicsPtr)->frontImgPosY,
             N(StoryGraphicsPtr)->imgFront,
             N(StoryGraphicsPtr)->palFront
         );
         N(appendGfx_image_ci)(
-            vpX + N(StoryGraphicsPtr)->backImgPosX,
+            vpX + backX,
             vpY + N(StoryGraphicsPtr)->backImgPosY,
             N(StoryGraphicsPtr)->imgBack,
             N(StoryGraphicsPtr)->palBack
@@ -1546,7 +1551,7 @@ API_CALLABLE(N(InitializeStoryGraphicsData)) {
     N(StoryGraphicsPtr)->backImgPosY = 0;
     N(StoryGraphicsPtr)->silhouettePosX = 0;
     N(StoryGraphicsPtr)->silhouettePosY = 240;
-    N(StoryGraphicsPtr)->tapePosX = 111;
+    N(StoryGraphicsPtr)->tapePosX = (SCREEN_WIDTH/2)-49;
     N(StoryGraphicsPtr)->tapePosY = 54;
 
     N(load_story_image)(FALSE, STORY_PAGE_BLANK);

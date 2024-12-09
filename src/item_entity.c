@@ -2539,7 +2539,7 @@ void func_801363A0(ItemEntity* item) {
                 } else {
                     width = get_msg_width(itemMsg, 0) + WD_VAR2;
                 }
-                posX = 160 - width / 2;
+                posX = (SCREEN_WIDTH/2) - width / 2;
                 posY = 76;
             } else {
                 if (!(item->flags & ITEM_ENTITY_FLAG_4000000) || (item->pickupMsgFlags & ITEM_PICKUP_FLAG_UNKNOWN)) {
@@ -2560,7 +2560,7 @@ void func_801363A0(ItemEntity* item) {
 
                 set_message_text_var(itemData->nameMsg, 0);
                 width = get_msg_width(itemMsg, 0) + WD_VAR3;
-                posX = 160 - width / 2;
+                posX = (SCREEN_WIDTH/2) - width / 2;
                 posY = 76;
             }
 #if !VERSION_JP
@@ -2591,8 +2591,8 @@ void func_801363A0(ItemEntity* item) {
             }
             if (item->state != ITEM_PICKUP_STATE_SHOW_GOT_ITEM) {
                 width = get_msg_width(MSG_Menus_0060, 0) + 24;
-                posX = 160 - width / 2;
-                set_window_properties(WIN_POPUP_TITLE_B, 160 - width / 2, 36, width, 40, WINDOW_PRIORITY_0, draw_content_cant_carry_more, item, -1);
+                posX = (SCREEN_WIDTH/2) - width / 2;
+                set_window_properties(WIN_POPUP_TITLE_B, (SCREEN_WIDTH/2) - width / 2, 36, width, 40, WINDOW_PRIORITY_0, draw_content_cant_carry_more, item, -1);
             }
             break;
         case ITEM_PICKUP_STATE_AWAIT_THROW_AWAY:
@@ -2602,8 +2602,8 @@ void func_801363A0(ItemEntity* item) {
 #else
             width = get_msg_width(MSG_Menus_005F, 0) + 54;
 #endif
-            posX = 160 - width / 2;
-            set_window_properties(WIN_PICKUP_HEADER, 160 - width / 2, 76, width, 40, WINDOW_PRIORITY_0, draw_content_pickup_item_header, item, -1);
+            posX = (SCREEN_WIDTH/2) - width / 2;
+            set_window_properties(WIN_PICKUP_HEADER, (SCREEN_WIDTH/2) - width / 2, 76, width, 40, WINDOW_PRIORITY_0, draw_content_pickup_item_header, item, -1);
             break;
     }
 }

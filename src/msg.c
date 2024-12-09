@@ -33,8 +33,8 @@ typedef MessageImageData* MessageImageDataList[1];
 
 Vp D_8014C280 = {
     .vp = {
-        .vscale = {640, 480, 511, 0},
-        .vtrans = {640, 480, 511, 0},
+        .vscale = { ((SCREEN_WIDTH/2)*4), ((SCREEN_HEIGHT/2)*4), 511, 0},
+        .vtrans = { ((SCREEN_WIDTH/2)*4), ((SCREEN_HEIGHT/2)*4), 511, 0},
     }
 };
 
@@ -572,7 +572,7 @@ void render_messages(void) {
     for (i = 0; i < ARRAY_COUNT(gMessagePrinters); i++) {
         if (gMessagePrinters[i].stateFlags & MSG_STATE_FLAG_2) {
             gSPViewport(gMainGfxPos++, &D_8014C280);
-            guOrtho(matrix, 0.0f, 319.0f, -240.0f, 0.0f, -500.0f, 500.0f, 1.0f);
+            guOrtho(matrix, 0.0f, (SCREEN_WIDTH-1), -SCREEN_HEIGHT, 0.0f, -500.0f, 500.0f, 1.0f);
             gSPMatrix(gMainGfxPos++, OS_K0_TO_PHYSICAL(matrix), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
             gDPPipeSync(gMainGfxPos++);
             gDPSetCycleType(gMainGfxPos++, G_CYC_1CYCLE);
@@ -742,6 +742,7 @@ void msg_copy_to_print_buffer(MessagePrintState* printer, s32 arg1, s32 arg2) {
                             printer->windowBasePos.y = *srcBuf++;
                             printer->windowSize.x = *srcBuf++;
                             printer->windowSize.y = *srcBuf++;
+                            printer->windowBasePos.x += ((SCREEN_WIDTH/2)-160);
                             printer->windowState = MSG_WINDOW_STATE_OPENING;
                             printer->stateFlags |= MSG_STATE_FLAG_800;
                         } while (0);
@@ -753,7 +754,7 @@ void msg_copy_to_print_buffer(MessagePrintState* printer, s32 arg1, s32 arg2) {
 #if VERSION_JP
                             printer->windowBasePos.x = 40;
 #else
-                            printer->windowBasePos.x = 20;
+                            printer->windowBasePos.x = ((SCREEN_WIDTH/2)-140);
 #endif
                             printer->windowBasePos.y = 28;
                             printer->windowSize.y = 58;

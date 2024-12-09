@@ -66,7 +66,7 @@ void state_init_language_select(void) {
     gCameras[CAM_TATTLE].flags |= CAMERA_FLAG_DISABLED;
     gCameras[CAM_HUD].flags |= CAMERA_FLAG_DISABLED;
     gCameras[CAM_DEFAULT].vfov = 25.0f;
-    set_cam_viewport(CAM_DEFAULT, 12, 28, 296, 184);
+    set_cam_viewport(CAM_DEFAULT, 12, 28, SCREEN_WIDTH-24, 184);
     gCameras[CAM_DEFAULT].params.basic.dist = 40;
     gCameras[CAM_DEFAULT].lookAt_eye.x = 500.0f;
     gCameras[CAM_DEFAULT].lookAt_eye.y = 1000.0f;
@@ -105,7 +105,7 @@ void state_init_file_select(void) {
     gCameras[CAM_TATTLE].flags |= CAMERA_FLAG_DISABLED;
     gCameras[CAM_HUD].flags |= CAMERA_FLAG_DISABLED;
     gCameras[CAM_DEFAULT].vfov = 25.0f;
-    set_cam_viewport(CAM_DEFAULT, 12, 28, 296, 184);
+    set_cam_viewport(CAM_DEFAULT, 12, 28, SCREEN_WIDTH-24, 184);
     gCameras[CAM_DEFAULT].params.basic.dist = 40;
     gCameras[CAM_DEFAULT].lookAt_eye.x = 500.0f;
     gCameras[CAM_DEFAULT].lookAt_eye.y = 1000.0f;
@@ -119,6 +119,7 @@ void state_init_file_select(void) {
     gCameras[CAM_DEFAULT].params.basic.skipRecalc = FALSE;
     gCameras[CAM_DEFAULT].params.basic.fovScale = 100;
     gCameras[CAM_DEFAULT].params.basic.pitch = 0;
+    gCameras[CAM_DEFAULT].lookAt_obj.x = -(((SCREEN_WIDTH-320)/2)*4);
     gOverrideFlags |= GLOBAL_OVERRIDES_WINDOWS_OVER_CURTAINS;
 }
 

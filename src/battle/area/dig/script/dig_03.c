@@ -25,7 +25,7 @@ EvtScript NAMESPACE = {
     Call(UseBattleCamPreset, BTL_CAM_DEFAULT)
     Call(MoveBattleCamOver, 1)
     Wait(3)
-    Call(SetCamViewport, CAM_BATTLE, 29, 20, 262, 177)
+    Call(SetCamViewport, CAM_BATTLE, ((SCREEN_WIDTH*29)/320), 20, ((SCREEN_WIDTH*262)/320), 177)
     Call(EnableBattleStatusBar, FALSE)
     Call(WaitForState, BATTLE_STATE_PLAYER_MENU)
     Call(N(SetupDemoPlayerMove))

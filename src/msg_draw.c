@@ -155,7 +155,7 @@ void draw_message_window(MessagePrintState* printer) {
     switch (printer->windowState) {
         case MSG_WINDOW_STATE_D:
         case MSG_WINDOW_STATE_E:
-            printer->windowBasePos.x = 160 - (printer->windowSize.x / 2);
+            printer->windowBasePos.x = (SCREEN_WIDTH/2) - (printer->windowSize.x / 2);
             printer->windowBasePos.y = 56;
             draw_box(DRAW_FLAG_ROTSCALE, WINDOW_STYLE_0, printer->windowBasePos.x, 56, 0, printer->windowSize.x, printer->windowSize.y, 255, 0,
                      scale, scale, 0.0f, 0.0f, rotZ, drawbox_message_delegate, printer, NULL, SCREEN_WIDTH,
@@ -186,11 +186,11 @@ void draw_message_window(MessagePrintState* printer) {
 #define MSG_EPILOGUE_TEXT_Y     0
 #else
 #define MSG_NORMAL_WIDTH        218
-#define MSG_NORMAL_X            22
-#define MSG_NORMAL_WIN_WIDTH    296
+#define MSG_NORMAL_X            ((SCREEN_WIDTH/2)-138)
+#define MSG_NORMAL_WIN_WIDTH    ((SCREEN_WIDTH/2)+136)
 #define MSG_NORMAL_WIN_HEIGHT   68
 #define MSG_NORMAL_TEXT_Y       6
-#define MSG_NORMAL_ARROW_X      276
+#define MSG_NORMAL_ARROW_X      ((SCREEN_WIDTH/2)+116)
 #define MSG_NORMAL_ARROW_Y      57
 #define MSG_NORMAL_HEIGHT_CAP   68
 #define MSG_NORMAL_PAGE_HT      14
@@ -707,9 +707,9 @@ void appendGfx_message(MessagePrintState* printer, s16 posX, s16 posY, u16 addit
                             signPalette = ui_msg_lamppost_pal;
                             msg_drawState->textColor = MSG_PAL_1C;
                         }
-                        msg_drawState->clipX[0] = 20 + MSG_SIGN_OFFSET_X + 14;
+                        msg_drawState->clipX[0] = ((SCREEN_WIDTH/2)-140) + MSG_SIGN_OFFSET_X + 14;
                         msg_drawState->clipY[0] = 40;
-                        msg_drawState->clipX[1] = 283 - MSG_SIGN_OFFSET_X;
+                        msg_drawState->clipX[1] = ((SCREEN_WIDTH/2)+123) - MSG_SIGN_OFFSET_X;
                         msg_drawState->clipY[1] = printer->windowSize.y + 17;
                         printer->rewindArrowPos.x = msg_drawState->clipX[1] - 16;
                         printer->rewindArrowPos.y = msg_drawState->clipY[1] - 9;
@@ -732,33 +732,33 @@ void appendGfx_message(MessagePrintState* printer, s16 posX, s16 posY, u16 addit
                             }
                         }
                         spAE = (u8)temp_s1_5;
-                        draw_ci_image_with_clipping(ui_msg_sign_corner_topleft_png, 16, 16, G_IM_FMT_CI, G_IM_SIZ_4b, signPalette, 20 + MSG_SIGN_OFFSET_X,
-                                                    28, 10, 10, 310, 230, temp_s1_5);
-                        draw_ci_image_with_clipping(ui_msg_sign_corner_topright_png, 16, 16, G_IM_FMT_CI, G_IM_SIZ_4b, signPalette, 284 - MSG_SIGN_OFFSET_X,
-                                                    28, 10, 10, 310, 230, temp_s1_5);
-                        draw_ci_image_with_clipping(ui_msg_sign_corner_bottomleft_png, 16, 16, G_IM_FMT_CI, G_IM_SIZ_4b, signPalette, 20 + MSG_SIGN_OFFSET_X,
-                                                    printer->windowSize.y + 12, 10, 10, 310, 230, temp_s1_5);
-                        draw_ci_image_with_clipping(signRaster, 16, 16, G_IM_FMT_CI, G_IM_SIZ_4b, signPalette, 284 - MSG_SIGN_OFFSET_X, printer->windowSize.y + 12,
-                                                    10, 10, 310, 230, temp_s1_5);
+                        draw_ci_image_with_clipping(ui_msg_sign_corner_topleft_png, 16, 16, G_IM_FMT_CI, G_IM_SIZ_4b, signPalette, ((SCREEN_WIDTH/2)-140) + MSG_SIGN_OFFSET_X,
+                                                    28, 10, 10, SCREEN_WIDTH-10, SCREEN_HEIGHT-10, temp_s1_5);
+                        draw_ci_image_with_clipping(ui_msg_sign_corner_topright_png, 16, 16, G_IM_FMT_CI, G_IM_SIZ_4b, signPalette, ((SCREEN_WIDTH/2)+124) - MSG_SIGN_OFFSET_X,
+                                                    28, 10, 10, SCREEN_WIDTH-10, SCREEN_HEIGHT-10, temp_s1_5);
+                        draw_ci_image_with_clipping(ui_msg_sign_corner_bottomleft_png, 16, 16, G_IM_FMT_CI, G_IM_SIZ_4b, signPalette, ((SCREEN_WIDTH/2)-140) + MSG_SIGN_OFFSET_X,
+                                                    printer->windowSize.y + 12, 10, 10, SCREEN_WIDTH-10, SCREEN_HEIGHT-10, temp_s1_5);
+                        draw_ci_image_with_clipping(signRaster, 16, 16, G_IM_FMT_CI, G_IM_SIZ_4b, signPalette, ((SCREEN_WIDTH/2)+124) - MSG_SIGN_OFFSET_X, printer->windowSize.y + 12,
+                                                    10, 10, SCREEN_WIDTH-10, SCREEN_HEIGHT-10, temp_s1_5);
                         gDPLoadTextureTile_4b(gMainGfxPos++, ui_msg_sign_side_top_png, G_IM_FMT_CI, 32, 0, 0, 0, 31, 15, 0, G_TX_NOMIRROR | G_TX_WRAP,
                                               G_TX_NOMIRROR | G_TX_WRAP, 5, 4, G_TX_NOLOD, G_TX_NOLOD);
-                        gSPTextureRectangle(gMainGfxPos++, (36 + MSG_SIGN_OFFSET_X) * 4, 28 * 4, (284 - MSG_SIGN_OFFSET_X) * 4, 44 * 4, G_TX_RENDERTILE, 0, 0,
+                        gSPTextureRectangle(gMainGfxPos++, (((SCREEN_WIDTH/2)-124) + MSG_SIGN_OFFSET_X) * 4, 28 * 4, (((SCREEN_WIDTH/2)+124) - MSG_SIGN_OFFSET_X) * 4, 44 * 4, G_TX_RENDERTILE, 0, 0,
                                             0x0400, 0x0400);
                         gDPLoadTextureTile_4b(gMainGfxPos++, ui_msg_sign_side_left_png, G_IM_FMT_CI, 16, 0, 0, 0, 15, 31, 0, G_TX_NOMIRROR | G_TX_WRAP,
                                               G_TX_NOMIRROR | G_TX_WRAP, 4, 5, G_TX_NOLOD, G_TX_NOLOD);
-                        gSPTextureRectangle(gMainGfxPos++, (20 + MSG_SIGN_OFFSET_X) * 4, 44 * 4, (36 + MSG_SIGN_OFFSET_X) * 4, (printer->windowSize.y + 12) * 4,
+                        gSPTextureRectangle(gMainGfxPos++, (((SCREEN_WIDTH/2)-140) + MSG_SIGN_OFFSET_X) * 4, 44 * 4, (((SCREEN_WIDTH/2)-124)  + MSG_SIGN_OFFSET_X) * 4, (printer->windowSize.y + 12) * 4,
                                             G_TX_RENDERTILE, 0, 0, 0x0400, 0x0400);
                         gDPLoadTextureTile_4b(gMainGfxPos++, ui_msg_sign_side_right_png, G_IM_FMT_CI, 16, 0, 0, 0, 15, 31, 0, G_TX_NOMIRROR | G_TX_WRAP,
                                               G_TX_NOMIRROR | G_TX_WRAP, 4, 5, G_TX_NOLOD, G_TX_NOLOD);
-                        gSPTextureRectangle(gMainGfxPos++, (284 - MSG_SIGN_OFFSET_X) * 4, 44 * 4, (300 - MSG_SIGN_OFFSET_X) * 4, (printer->windowSize.y + 12) * 4,
+                        gSPTextureRectangle(gMainGfxPos++, (((SCREEN_WIDTH/2)+124) - MSG_SIGN_OFFSET_X) * 4, 44 * 4, (((SCREEN_WIDTH/2)+140) - MSG_SIGN_OFFSET_X) * 4, (printer->windowSize.y + 12) * 4,
                                             G_TX_RENDERTILE, 0, 0, 0x0400, 0x0400);
                         gDPLoadTextureTile_4b(gMainGfxPos++, ui_msg_sign_side_bottom_png, G_IM_FMT_CI, 32, 0, 0, 0, 31, 15, 0, G_TX_NOMIRROR | G_TX_WRAP,
                                               G_TX_NOMIRROR | G_TX_WRAP, 5, 4, G_TX_NOLOD, G_TX_NOLOD);
-                        gSPTextureRectangle(gMainGfxPos++, (36 + MSG_SIGN_OFFSET_X) * 4, (printer->windowSize.y + 12) * 4, (284 - MSG_SIGN_OFFSET_X) * 4,
+                        gSPTextureRectangle(gMainGfxPos++, (((SCREEN_WIDTH/2)-124) + MSG_SIGN_OFFSET_X) * 4, (printer->windowSize.y + 12) * 4, (((SCREEN_WIDTH/2)+124) - MSG_SIGN_OFFSET_X) * 4,
                                             (printer->windowSize.y + 28) * 4, G_TX_RENDERTILE, 0, 0, 0x0400, 0x0400);
                         gDPLoadTextureTile_4b(gMainGfxPos++, ui_msg_sign_fill_png, G_IM_FMT_CI, 8, 0, 0, 0, 7, 7, 0, G_TX_NOMIRROR | G_TX_WRAP,
                                               G_TX_NOMIRROR | G_TX_WRAP, 3, 3, G_TX_NOLOD, G_TX_NOLOD);
-                        gSPTextureRectangle(gMainGfxPos++, (36 + MSG_SIGN_OFFSET_X) * 4, 44 * 4, (283 - MSG_SIGN_OFFSET_X + 1) * 4, (printer->windowSize.y + 12) * 4,
+                        gSPTextureRectangle(gMainGfxPos++, (((SCREEN_WIDTH/2)-124) + MSG_SIGN_OFFSET_X) * 4, 44 * 4, (((SCREEN_WIDTH/2)+123) - MSG_SIGN_OFFSET_X + 1) * 4, (printer->windowSize.y + 12) * 4,
                                             G_TX_RENDERTILE, 0, 0, 0x0400, 0x0400);
                         msg_reset_gfx_state();
                         msg_drawState->drawBufferPos += 2;
@@ -820,7 +820,7 @@ void appendGfx_message(MessagePrintState* printer, s16 posX, s16 posY, u16 addit
                             printer->windowBasePos.x = 0;
                             printer->windowBasePos.y = 0;
                         } else {
-                            printer->windowBasePos.x = 160 - printer->windowSize.x / 2;
+                            printer->windowBasePos.x = (SCREEN_WIDTH/2) - printer->windowSize.x / 2;
                             printer->windowBasePos.y = 56;
                             draw_box(0, WINDOW_STYLE_0, printer->windowBasePos.x, 56, 0, printer->windowSize.x,
                                      printer->windowSize.y, 255, 0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, NULL, 0, NULL,
@@ -1268,6 +1268,7 @@ void appendGfx_message(MessagePrintState* printer, s16 posX, s16 posY, u16 addit
                 msg_drawState->charScale.y = msg_drawState->msgScale.y;
                 if (msg_drawState->printModeFlags & MSG_PRINT_FLAG_80) {
                     msg_drawState->nextPos[0] += msg_drawState->centerPos - printer->msgWidth / 2;
+                    msg_drawState->nextPos[0] += (SCREEN_WIDTH/2)-160;
                     msg_drawState->printModeFlags &= ~MSG_PRINT_FLAG_80;
                 }
                 if (msg_drawState->printModeFlags & MSG_PRINT_FLAG_40) {
@@ -1975,7 +1976,7 @@ void msg_draw_speech_arrow(MessagePrintState* printer) {
 
     if (printer->style == MSG_STYLE_LEFT) {
         pointRightSide = FALSE;
-    } else if (printer->style == MSG_STYLE_CENTER || printer->openStartPos.x >= 160) {
+    } else if (printer->style == MSG_STYLE_CENTER || printer->openStartPos.x >= (SCREEN_WIDTH/2)) {
         pointRightSide = TRUE;
     }
 

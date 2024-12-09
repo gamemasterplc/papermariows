@@ -201,7 +201,7 @@ void state_init_title_screen(void) {
     gCameras[CAM_BATTLE].flags |= CAMERA_FLAG_DISABLED;
     gCameras[CAM_TATTLE].flags |= CAMERA_FLAG_DISABLED;
     gCameras[CAM_HUD].flags |= CAMERA_FLAG_DISABLED;
-    set_cam_viewport(CAM_DEFAULT, 12, 28, 296, 184);
+    set_cam_viewport(CAM_DEFAULT, 12, 28, SCREEN_WIDTH-24, 184);
     gCameras[CAM_DEFAULT].params.basic.dist = 40;
     gCameras[CAM_DEFAULT].bgColor[0] = 0;
     gCameras[CAM_DEFAULT].bgColor[1] = 0;
@@ -215,6 +215,8 @@ void state_init_title_screen(void) {
     gCameras[CAM_DEFAULT].lookAt_eye.y = 1000.0f;
     gCameras[CAM_DEFAULT].lookAt_eye.z = 1500.0f;
     gCameras[CAM_DEFAULT].lookAt_obj_target.z = 150.0f;
+    gCameras[CAM_DEFAULT].lookAt_obj.x = -(((SCREEN_WIDTH-320)/2)*4);
+    
     clear_script_list();
     clear_worker_list();
     clear_render_tasks();
