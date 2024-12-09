@@ -2240,7 +2240,7 @@ void draw_number(s32 value, s32 x, s32 y, s32 charset, s32 palette, s32 opacity,
 #if !VERSION_JP
     y -= 2;
 #endif
-    if (y < 0 || y > 240) {
+    if (y < 0 || y > SCREEN_HEIGHT) {
         return;
     }
 
@@ -2305,7 +2305,7 @@ void draw_number(s32 value, s32 x, s32 y, s32 charset, s32 palette, s32 opacity,
     gDPLoadTLUT_pal16(gMainGfxPos++, 0, D_802F4560[palette]);
     for (i = 0; i < count; i++) {
         posX = digitPosX[i];
-        if (posX > 0 && posX < 320) {
+        if (posX > 0 && posX < SCREEN_WIDTH) {
             draw_digit(raster + digits[i] * texSize, charset, posX, y);
         }
     }

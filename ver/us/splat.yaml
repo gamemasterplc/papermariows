@@ -62,7 +62,7 @@ vram_classes:
   - { name: area_entities, vram: 0x802BAE00, vram_symbol: model_clear_render_tasks_VRAM_END }
   - { name: world_partner, vram: 0x802BD100, follows_classes: [area_entities] }
   - { name: world_use_item, vram: 0x802C0000, follows_classes: [world_partner] }
-  - { name: evt, vram: 0x802C3000, vram_symbol: world_use_item_VRAM_END }
+  - { name: evt, vram: 0x802C3000, vram_symbol: seg_evt_start }
   - { name: engine4, vram: 0x802DBD40, vram_symbol: evt_VRAM_END }
   - { name: entity, vram: 0x802E0D90, vram_symbol: engine4_VRAM_END }
   - { name: font_width, vram: 0x802EB3D0, vram_symbol: entity_VRAM_END }
