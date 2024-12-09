@@ -119,7 +119,6 @@ void state_init_file_select(void) {
     gCameras[CAM_DEFAULT].params.basic.skipRecalc = FALSE;
     gCameras[CAM_DEFAULT].params.basic.fovScale = 100;
     gCameras[CAM_DEFAULT].params.basic.pitch = 0;
-    gCameras[CAM_DEFAULT].lookAt_obj.x = -(((SCREEN_WIDTH-320)/2)*4);
     gOverrideFlags |= GLOBAL_OVERRIDES_WINDOWS_OVER_CURTAINS;
 }
 

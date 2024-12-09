@@ -6,6 +6,7 @@
 #include "overlay.h"
 
 extern s32 gPauseBackgroundFade;
+extern s32 gTitleBgFlag;
 
 Vp D_80074200 = {
     .vp = {
@@ -477,11 +478,17 @@ void gfx_draw_background(void) {
             if (!(gGameStatusPtr->backgroundFlags & BACKGROUND_FLAG_TEXTURE)) {
                 gDPFillRectangle(gMainGfxPos++, backgroundMinX, backgroundMinY, backgroundMaxX - 1, backgroundMaxY - 1);
             } else {
-                viewportStartX = camera->viewportStartX;
-                backgroundMinX = viewportStartX;
-                backgroundMaxX = viewportStartX + camera->viewportW;
-                backgroundMinY = camera->viewportStartY;
-                backgroundMaxY = camera->viewportStartY + camera->viewportH;
+                if(!gTitleBgFlag) {
+                    viewportStartX = camera->viewportStartX;
+                    backgroundMinX = viewportStartX;
+                    backgroundMaxX = viewportStartX + camera->viewportW;
+                    backgroundMinY = camera->viewportStartY;
+                    backgroundMaxY = camera->viewportStartY + camera->viewportH;
+                } else {
+                    backgroundMinX += ((SCREEN_WIDTH/2)-160);
+                    backgroundMaxX += ((SCREEN_WIDTH/2)-160);
+                }
+                
                 appendGfx_background_texture();
             }
 

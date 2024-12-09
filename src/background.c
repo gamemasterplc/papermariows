@@ -7,6 +7,7 @@ char gSunnyFlowerFieldsBg[] = "flb_bg";
 s8 gBackroundWaveEnabled = FALSE;
 s16 gBackroundTextureYOffset = 0;
 f32 gBackroundWavePhase = 0.0f;
+s32 gTitleBgFlag = FALSE;
 
 BSS PAL_BIN gBackgroundPalette[256];
 BSS f32 gBackroundLastScrollValue;
@@ -26,6 +27,11 @@ void load_map_bg(char* optAssetName) {
             if (strcmp(assetName, gCloudyFlowerFieldsBg) == 0) {
                 assetName = gSunnyFlowerFieldsBg;
             }
+        }
+        if(strcmp(assetName, "title_bg") == 0) {
+            gTitleBgFlag = TRUE;
+        } else {
+            gTitleBgFlag = FALSE;
         }
 
         compressedData = load_asset_by_name(assetName, &assetSize);
@@ -206,8 +212,11 @@ void appendGfx_background_texture(void) {
     while (scrollValue < 0.0f) {
         scrollValue += gGameStatusPtr->backgroundMaxX * 32;
     }
-
+    
     bgXOffset = gGameStatusPtr->backgroundXOffset = ((s32)scrollValue) % gGameStatusPtr->backgroundMaxX;
+    if(gTitleBgFlag) {
+        bgXOffset += ((SCREEN_WIDTH/2)-160);
+    }
     bgMaxX = gGameStatusPtr->backgroundMaxX;
     bgMaxY = gGameStatusPtr->backgroundMaxY;
     bgMinX = gGameStatusPtr->backgroundMinX;

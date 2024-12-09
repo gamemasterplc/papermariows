@@ -215,7 +215,6 @@ void state_init_title_screen(void) {
     gCameras[CAM_DEFAULT].lookAt_eye.y = 1000.0f;
     gCameras[CAM_DEFAULT].lookAt_eye.z = 1500.0f;
     gCameras[CAM_DEFAULT].lookAt_obj_target.z = 150.0f;
-    gCameras[CAM_DEFAULT].lookAt_obj.x = -(((SCREEN_WIDTH-320)/2)*4);
     
     clear_script_list();
     clear_worker_list();
@@ -291,17 +290,12 @@ void state_step_title_screen(void) {
                 }
             }
 #endif
-            if (PlayIntroNext && TitleScreen_TimeLeft == 120) {
+            if (TitleScreen_TimeLeft == 120) {
                 bgm_set_song(0, -1, 0, 3900, 8);
             }
             if (TitleScreen_TimeLeft == 0) {
                 gGameStatusPtr->startupState = TITLE_STATE_BEGIN_DISMISS;
-                if (!PlayIntroNext) {
-                    TitleScreenNextState = NEXT_STATE_DEMO;
-                } else {
-                    TitleScreenNextState = NEXT_STATE_INTRO;
-                }
-                PlayIntroNext ^= 1;
+                TitleScreenNextState = NEXT_STATE_INTRO;
                 return;
             }
             if (pressedButtons & (BUTTON_A | BUTTON_START)) {
