@@ -1268,7 +1268,9 @@ void appendGfx_message(MessagePrintState* printer, s16 posX, s16 posY, u16 addit
                 msg_drawState->charScale.y = msg_drawState->msgScale.y;
                 if (msg_drawState->printModeFlags & MSG_PRINT_FLAG_80) {
                     msg_drawState->nextPos[0] += msg_drawState->centerPos - printer->msgWidth / 2;
-                    msg_drawState->nextPos[0] += (SCREEN_WIDTH/2)-160;
+                    if(msg_drawState->centerPos >= 128) {
+                        msg_drawState->nextPos[0] += (SCREEN_WIDTH/2)-160;
+                    }
                     msg_drawState->printModeFlags &= ~MSG_PRINT_FLAG_80;
                 }
                 if (msg_drawState->printModeFlags & MSG_PRINT_FLAG_40) {
