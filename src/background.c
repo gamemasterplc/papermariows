@@ -208,15 +208,13 @@ void appendGfx_background_texture(void) {
     } else {
         gBackroundLastScrollValue = scrollValue;
     }
-
+    scrollValue += ((SCREEN_WIDTH/2)-160);
     while (scrollValue < 0.0f) {
         scrollValue += gGameStatusPtr->backgroundMaxX * 32;
     }
     
     bgXOffset = gGameStatusPtr->backgroundXOffset = ((s32)scrollValue) % gGameStatusPtr->backgroundMaxX;
-    if(gTitleBgFlag) {
-        bgXOffset += ((SCREEN_WIDTH/2)-160);
-    }
+    
     bgMaxX = gGameStatusPtr->backgroundMaxX;
     bgMaxY = gGameStatusPtr->backgroundMaxY;
     bgMinX = gGameStatusPtr->backgroundMinX;

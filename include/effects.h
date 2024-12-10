@@ -1614,8 +1614,8 @@ typedef struct UnderwaterFXData {
     /* 0x018 */ f32 unk_18;
     /* 0x01C */ Color_RGBA8 waterColor;
     /* 0x020 */ Color_RGB8 unk_20;
-    /* 0x023 */ s8 unk_23[19][13];
-    /* 0x11A */ s16 unk_11A[19][13];
+    /* 0x023 */ s8 unk_23[((SCREEN_WIDTH+15)/16)-1][13];
+    /* 0x11A */ s16 unk_11A[((SCREEN_WIDTH+15)/16)-1][13];
 } UnderwaterFXData; // size = 0x308
 
 typedef struct LightningBoltFXData {

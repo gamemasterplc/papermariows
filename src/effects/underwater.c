@@ -172,7 +172,7 @@ void underwater_appendGfx(void* effect) {
             gMainGfxPos++, nuGfxCfb_ptr + SCREEN_WIDTH * i * SCREEN_COPY_TILE_HEIGHT,
             G_IM_FMT_RGBA, G_IM_SIZ_16b,
             SCREEN_WIDTH, SCREEN_COPY_TILE_HEIGHT,
-            0, 0, SCREEN_WIDTH - 1, 5, 0,
+            0, 0, SCREEN_WIDTH - 1, SCREEN_COPY_TILE_HEIGHT-1, 0,
             G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP,
             G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         gSPTextureRectangle(
@@ -192,7 +192,7 @@ void underwater_appendGfx(void* effect) {
     gDPSetTexturePersp(gMainGfxPos++, G_TP_PERSP);
     gDPSetTextureFilter(gMainGfxPos++, G_TF_BILERP);
 
-    guFrustumF(mtx, -80.0f, 80.0f, 60.0f, -60.0f, 160.0f, 640.0f, 1.0f);
+    guFrustumF(mtx, -(SCREEN_WIDTH/4), SCREEN_WIDTH/4, 60.0f, -60.0f, 160.0f, 640.0f, 1.0f);
     guMtxF2L(mtx, &gDisplayContext->matrixStack[gMatrixListPos]);
     gSPMatrix(gMainGfxPos++, &gDisplayContext->matrixStack[gMatrixListPos++], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPClearGeometryMode(gMainGfxPos++, G_CULL_BOTH | G_LIGHTING);
