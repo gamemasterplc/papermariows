@@ -1750,7 +1750,7 @@ void btl_show_message_popup(void* data) {
             if (popup->needsInit) {
                 popup->needsInit = FALSE;
                 msgWidth = get_msg_width(BattleMessages[popup->messageIndex], 0) + (31 + D_8028374C_1BA13C[popup->messageIndex][0]);
-                posX = 160 - (msgWidth / 2);
+                posX = (SCREEN_WIDTH/2) - (msgWidth / 2);
                 width = msgWidth;
                 height = 28 + D_8028374C_1BA13C[popup->messageIndex][1];
                 set_window_properties(WIN_BTL_POPUP, posX, posY, width, height, WINDOW_PRIORITY_0, btl_message_popup_draw_content, popup, -1);
@@ -1764,7 +1764,7 @@ void btl_show_message_popup(void* data) {
             if (popup->needsInit) {
                 popup->needsInit = FALSE;
                 msgWidth = get_msg_width(BattleMessages[popup->messageIndex], 0) + (31 + D_8028374C_1BA13C[popup->messageIndex][0]);
-                posX = 160 - (msgWidth / 2);
+                posX = (SCREEN_WIDTH/2) - (msgWidth / 2);
                 width = msgWidth;
                 height = 45 + D_8028374C_1BA13C[popup->messageIndex][1];
                 set_window_properties(WIN_BTL_POPUP, posX, posY, width, height, WINDOW_PRIORITY_0, btl_message_popup_draw_content, popup, -1);
@@ -1795,7 +1795,7 @@ void btl_show_message_popup(void* data) {
             if (popup->needsInit) {
                 popup->needsInit = FALSE;
                 msgWidth = get_msg_width(BattleMessages[popup->messageIndex], 0) + (31 + D_8028374C_1BA13C[popup->messageIndex][0]);
-                posX = 160 - (msgWidth / 2);
+                posX = (SCREEN_WIDTH/2) - (msgWidth / 2);
                 width = msgWidth;
                 posY = 192;
                 height = 28 + D_8028374C_1BA13C[popup->messageIndex][1];
@@ -1823,7 +1823,7 @@ void btl_show_message_popup(void* data) {
             if (popup->needsInit) {
                 popup->needsInit = FALSE;
                 msgWidth = get_msg_width(BattleMessages[popup->messageIndex], 0) + (55 + D_8028374C_1BA13C[popup->messageIndex][0]);
-                posX = 160 - (msgWidth / 2);
+                posX = (SCREEN_WIDTH/2) - (msgWidth / 2);
                 width = msgWidth;
                 height = 40 + D_8028374C_1BA13C[popup->messageIndex][1];
                 set_window_properties(WIN_BTL_POPUP, posX, posY, width, height, WINDOW_PRIORITY_0, btl_message_popup_draw_content, popup, -1);
@@ -1841,7 +1841,7 @@ void btl_show_message_popup(void* data) {
             if (popup->needsInit) {
                 popup->needsInit = FALSE;
                 msgWidth = get_msg_width(BattleMessages[popup->messageIndex], 0) + (31 + D_8028374C_1BA13C[popup->messageIndex][0]);
-                posX = 160 - (msgWidth / 2);
+                posX = (SCREEN_WIDTH/2) - (msgWidth / 2);
                 width = msgWidth;
                 if (D_80283B88_1BA578[popup->messageIndex - 10] != 0) {
                     height = 45 + D_8028374C_1BA13C[popup->messageIndex][1];
@@ -1864,7 +1864,7 @@ void btl_show_message_popup(void* data) {
             if (popup->needsInit) {
                 popup->needsInit = FALSE;
                 msgWidth = get_msg_width(BattleMessages[popup->messageIndex], 0) + (31 + D_8028374C_1BA13C[popup->messageIndex][0]);
-                posX = 160 - (msgWidth / 2);
+                posX = (SCREEN_WIDTH/2) - (msgWidth / 2);
                 width = msgWidth;
                 if (D_80283BA8_1BA598[popup->messageIndex - 18] != 0) {
                     height = 45 + D_8028374C_1BA13C[popup->messageIndex][1];
@@ -1893,7 +1893,7 @@ void btl_show_message_popup(void* data) {
                 messageID = BattleMessages[popup->messageIndex];
                 set_message_int_var(BattlePopupMessageVar, 0);
                 msgWidth = get_msg_width(messageID, 0) + (31 + D_8028374C_1BA13C[popup->messageIndex][0]);
-                posX = 160 - (msgWidth / 2);
+                posX = (SCREEN_WIDTH/2) - (msgWidth / 2);
                 width = msgWidth;
                 height = 28 + D_8028374C_1BA13C[popup->messageIndex][1];
                 set_window_properties(WIN_BTL_POPUP, posX, posY, width, height, WINDOW_PRIORITY_0, btl_message_popup_draw_content, popup, -1);
@@ -1908,7 +1908,7 @@ void btl_show_message_popup(void* data) {
                 messageID = BattleMessages[popup->messageIndex];
                 set_message_text_var(bActorMessages[BattlePopupMessageVar], 0);
                 msgWidth = get_msg_width(messageID, 0) + (31 + D_8028374C_1BA13C[popup->messageIndex][0]);
-                posX = 160 - (msgWidth / 2);
+                posX = (SCREEN_WIDTH/2) - (msgWidth / 2);
                 width = msgWidth;
                 height = 28 + D_8028374C_1BA13C[popup->messageIndex][1];
                 set_window_properties(WIN_BTL_POPUP, posX, posY, width, height, WINDOW_PRIORITY_0, btl_message_popup_draw_content, popup, -1);
@@ -1970,7 +1970,7 @@ void btl_show_message_popup(void* data) {
                 popup->needsInit = FALSE;
                 messageID = BattleMessages[popup->messageIndex];
                 msgWidth = get_msg_width(messageID, 0) + 30;
-                posX = 160 - (msgWidth / 2);
+                posX = (SCREEN_WIDTH/2) - (msgWidth / 2);
                 width = msgWidth;
                 numLines = get_msg_lines(messageID) - 1;
                 height = BattleMessage_BoxSizesY[numLines];
@@ -1988,7 +1988,7 @@ void btl_show_message_popup(void* data) {
             if (popup->needsInit) {
                 popup->needsInit = FALSE;
                 msgWidth = get_msg_width(BattleMessages[popup->messageIndex], 0) + 55;
-                posX = 160 - (msgWidth / 2);
+                posX = (SCREEN_WIDTH/2) - (msgWidth / 2);
                 width = msgWidth;
                 height = 40;
                 set_window_properties(WIN_BTL_POPUP, posX, posY, width, height, WINDOW_PRIORITY_0, btl_message_popup_draw_content, popup, -1);
@@ -2012,7 +2012,7 @@ void btl_show_message_popup(void* data) {
                 messageID = BattleMessages[popup->messageIndex];
                 set_message_int_var(BattlePopupMessageVar, 0);
                 msgWidth = get_msg_width(messageID, 0) + 31;
-                posX = 160 - (msgWidth / 2);
+                posX = (SCREEN_WIDTH/2) - (msgWidth / 2);
                 width = msgWidth;
                 numLines = get_msg_lines(messageID) - 1;
                 height = BattleMessage_BoxSizesY[numLines];
@@ -2028,7 +2028,7 @@ void btl_show_message_popup(void* data) {
                 messageID = BattleMessages[popup->messageIndex];
                 set_message_text_var(bActorMessages[BattlePopupMessageVar], 0);
                 msgWidth = get_msg_width(messageID, 0) + 31;
-                posX = 160 - (msgWidth / 2);
+                posX = (SCREEN_WIDTH/2) - (msgWidth / 2);
                 width = msgWidth;
                 numLines = get_msg_lines(messageID) - 1;
                 height = BattleMessage_BoxSizesY[numLines];
@@ -2063,7 +2063,7 @@ void btl_show_message_popup(void* data) {
                 popup->needsInit = FALSE;
                 messageID = BattleMessages[popup->messageIndex];
                 msgWidth = get_msg_width(messageID, 0) + 31;
-                posX = 160 - (msgWidth / 2);
+                posX = (SCREEN_WIDTH/2) - (msgWidth / 2);
                 posY = 192;
                 width = msgWidth;
                 numLines = get_msg_lines(messageID) - 1;

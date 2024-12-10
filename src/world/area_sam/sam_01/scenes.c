@@ -132,7 +132,7 @@ EvtScript N(EVS_Scene_MysteryBegins) = {
         Call(SpeakToPlayer, NPC_MayorPenguinWife, ANIM_MayorPenguinWife_Horror, ANIM_MayorPenguinWife_Horror, 0, MSG_CH7_0006)
         Set(MF_ContinueScene, TRUE)
     EndThread
-    Call(SetMotionBlurParams, 0, 0, 0, 320, 240, 128, 10)
+    Call(SetMotionBlurParams, 0, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 128, 10)
     Loop(5)
         Call(GetNpcPos, NPC_MayorPenguinWife, LVar0, LVar1, LVar2)
         Call(UseSettingsFrom, CAM_DEFAULT, LVar0, LVar1, LVar2)
@@ -149,7 +149,7 @@ EvtScript N(EVS_Scene_MysteryBegins) = {
         Call(PanToTarget, CAM_DEFAULT, 0, TRUE)
         Call(WaitForCam, CAM_DEFAULT, Float(1.0))
     EndLoop
-    Call(SetMotionBlurParams, 0, 0, 0, 320, 240, 0, 10)
+    Call(SetMotionBlurParams, 0, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 10)
     Label(2)
         IfEq(MF_ContinueScene, FALSE)
             Wait(1)

@@ -80,7 +80,7 @@ EvtScript N(EVS_UsePower) = {
     Call(SetNpcAnimation, NPC_BTL_SPIRIT, ANIM_BattleKalmar_Shout)
     Call(UseBattleCamPreset, BTL_CAM_DEFAULT)
     Wait(20)
-    Call(SetMotionBlurParams, 0, 0, 0, 320, 240, 128, 10)
+    Call(SetMotionBlurParams, 0, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 128, 10)
     Call(N(DarkenBackground))
     Call(PlaySound, SOUND_UP_AND_AWAY_CAST)
     PlayEffect(EFFECT_ENERGY_SHOCKWAVE, 0, 0, 20, 0, Float(1.0), 90)
@@ -90,7 +90,7 @@ EvtScript N(EVS_UsePower) = {
     EndThread
     PlayEffect(EFFECT_ENERGY_SHOCKWAVE, 0, 0, 20, 0, Float(1.0), 90)
     Wait(75)
-    Call(SetMotionBlurParams, 0, 0, 0, 320, 240, 0, 10)
+    Call(SetMotionBlurParams, 0, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 10)
     Call(InitTargetIterator)
     Label(0)
         Call(SetGoalToTarget, ACTOR_SELF)

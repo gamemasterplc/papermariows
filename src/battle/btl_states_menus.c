@@ -1374,7 +1374,7 @@ s32 btl_submenu_moves_update(void) {
 
             moveX = POS_X;
             moveY = BattleMenu_Moves_PosY;
-            set_window_properties(WIN_BTL_DESC_BOX, moveX, 186, WIDTH_3, 32, WINDOW_PRIORITY_20, btl_menu_moves_show_desc, NULL, -1);
+            set_window_properties(WIN_BTL_DESC_BOX, moveX+((SCREEN_WIDTH/2)-160), 186, WIDTH_3, 32, WINDOW_PRIORITY_20, btl_menu_moves_show_desc, NULL, -1);
             set_window_update(WIN_BTL_MOVES_MENU, WINDOW_UPDATE_SHOW);
             if (!BattleMenu_UsingSpiritsSubmenu) {
                 set_window_update(WIN_BTL_MOVES_TITLE, WINDOW_UPDATE_SHOW);
@@ -2143,7 +2143,7 @@ s32 btl_update_strats_menu(void) {
 #endif
             x = X_VAR7;
             y = 186;
-            set_window_properties(WIN_BTL_DESC_BOX, x, y, W_VAR3, 32, WINDOW_PRIORITY_20, btl_menu_strats_show_desc, NULL, -1);
+            set_window_properties(WIN_BTL_DESC_BOX, x+((SCREEN_WIDTH/2)-160), y, W_VAR3, 32, WINDOW_PRIORITY_20, btl_menu_strats_show_desc, NULL, -1);
             set_window_update(WIN_BTL_STRATS_MENU, WINDOW_UPDATE_SHOW);
             set_window_update(WIN_BTL_STRATS_TITLE, WINDOW_UPDATE_SHOW);
             set_window_update(WIN_BTL_DESC_BOX, WINDOW_UPDATE_SHOW);

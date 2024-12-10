@@ -251,7 +251,7 @@ EvtScript N(EVS_NpcInteract_RaphaelRaven_Before) = {
         Call(SpeakToPlayer, NPC_SELF, ANIM_RaphaelRaven_TalkNoFeetAngry, ANIM_RaphaelRaven_TalkNoFeetAngry, 5, MSG_CH5_00DC)
         Set(MF_Unk_00, TRUE)
     EndThread
-    Call(SetMotionBlurParams, 0, 0, 0, 320, 240, 128, 10)
+    Call(SetMotionBlurParams, 0, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 128, 10)
     Call(SetNpcAnimation, NPC_SELF, ANIM_RaphaelRaven_TalkNoFeetAngry)
     Call(GetNpcPos, NPC_SELF, LVar0, LVar1, LVar2)
     Call(SetPanTarget, CAM_DEFAULT, LVar0, LVar1, LVar2)
@@ -266,7 +266,7 @@ EvtScript N(EVS_NpcInteract_RaphaelRaven_Before) = {
         Call(PanToTarget, CAM_DEFAULT, 0, TRUE)
         Call(WaitForCam, CAM_DEFAULT, Float(1.0))
     EndLoop
-    Call(SetMotionBlurParams, 0, 0, 0, 320, 240, 0, 10)
+    Call(SetMotionBlurParams, 0, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 10)
     Label(2)
         IfEq(MF_Unk_00, FALSE)
             Wait(1)

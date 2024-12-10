@@ -30,7 +30,7 @@ EffectInstance* quizmo_answer_main(s32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     }
 
     gDPSetScissor(gMainGfxPos++, G_SC_NON_INTERLACE, 0, 0, 320, 240);
-    gSPTextureRectangle(gMainGfxPos++, 512, 304, 768, 560, G_TX_RENDERTILE, 0, 1024, 1024, 1024);
+    gSPTextureRectangle(gMainGfxPos++, ((SCREEN_WIDTH/2)-32)*4, ((SCREEN_HEIGHT/2)-44)*4, ((SCREEN_WIDTH/2)+32)*4, ((SCREEN_HEIGHT/2)+20)*4, G_TX_RENDERTILE, 0, 1024, 1024, 1024);
     gDPPipeSync(gMainGfxPos++);
     gSPSegment(gMainGfxPos++, 0x00, NULL);
 
