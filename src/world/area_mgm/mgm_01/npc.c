@@ -109,10 +109,10 @@ void N(appendGfx_score_display) (void* renderData) {
             }
         }
     } else {
-        if (data->scoreWindowPosX > 220) {
+        if (data->scoreWindowPosX > (SCREEN_WIDTH-100)) {
             data->scoreWindowPosX -= 10;
-            if (data->scoreWindowPosX < 220) {
-                data->scoreWindowPosX = 220;
+            if (data->scoreWindowPosX < (SCREEN_WIDTH-100)) {
+                data->scoreWindowPosX = SCREEN_WIDTH-100;
             }
         }
     }

@@ -164,10 +164,10 @@ void N(appendGfx_score_display)(void* renderData) {
             }
         }
     } else {
-        if (data->windowB_posX > 225) {
+        if (data->windowB_posX > (SCREEN_WIDTH-95)) {
             data->windowB_posX -= 10;
-            if (data->windowB_posX < 225) {
-                data->windowB_posX = 225;
+            if (data->windowB_posX < (SCREEN_WIDTH-95)) {
+                data->windowB_posX = SCREEN_WIDTH-95;
             }
         }
     }

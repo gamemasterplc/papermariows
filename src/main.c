@@ -192,7 +192,7 @@ void appendGfx_reset_tile_pattern(void) {
     gDPLoadTextureTile_4b(gMainGfxPos++, ResetTilesImg, G_IM_FMT_I, 128, 8, 0, 0, 127, 7, 0, G_TX_NOMIRROR | G_TX_WRAP,
                           G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 
-    for (i = 0; i < 20; i++) {
+    for (i = 0; i < (SCREEN_WIDTH+15)/16; i++) {
         for (j = 0; j < 15; j++) {
             s32 s4 = i + 14;
             t = (33 - (s4 - j)) / 2 + 15 - D_80074010;
@@ -202,28 +202,28 @@ void appendGfx_reset_tile_pattern(void) {
             if (t < 0) {
                 continue;
             }
-            gSPTextureRectangle(gMainGfxPos++, ((i * 8) + 160) * 4,
+            gSPTextureRectangle(gMainGfxPos++, ((i * 8) + (SCREEN_WIDTH/2)) * 4,
                                                  ((j * 8)) * 4,
-                                                 ((i * 8) + 168) * 4,
+                                                 ((i * 8) + (SCREEN_WIDTH/2)+8) * 4,
                                                  ((j * 8) + 8) * 4,
                                                  G_TX_RENDERTILE,
                                                  (t * 8) * 32, 0, 0x0400, 0x0400);
-            gSPTextureRectangle(gMainGfxPos++, ((i * 8) + 160) * 4,
-                                                 (232 - (j * 8)) * 4,
-                                                 ((i * 8) + 168) * 4,
-                                                 (240 - (j * 8)) * 4,
+            gSPTextureRectangle(gMainGfxPos++, ((i * 8) + (SCREEN_WIDTH/2)) * 4,
+                                                 ((SCREEN_HEIGHT-8) - (j * 8)) * 4,
+                                                 ((i * 8) + (SCREEN_WIDTH/2)+8) * 4,
+                                                 (SCREEN_HEIGHT - (j * 8)) * 4,
                                                  G_TX_RENDERTILE,
                                                  (t * 8) * 32, 7 * 32, 0x0400, -0x0400);
-            gSPTextureRectangle(gMainGfxPos++, (152 - (i * 8)) * 4,
+            gSPTextureRectangle(gMainGfxPos++, (((SCREEN_WIDTH/2)-8) - (i * 8)) * 4,
                                                  ((j * 8)) * 4,
-                                                 (160 - (i * 8)) * 4,
+                                                 ((SCREEN_WIDTH/2) - (i * 8)) * 4,
                                                  ((j * 8) + 8) * 4,
                                                  G_TX_RENDERTILE,
                                                  (t * 8 + 7) * 32, 0, -0x0400, 0x0400);
-            gSPTextureRectangle(gMainGfxPos++, (152 - (i * 8)) * 4,
-                                                 (232 - (j * 8)) * 4,
-                                                 (160 - (i * 8)) * 4,
-                                                 (240 - (j * 8)) * 4,
+            gSPTextureRectangle(gMainGfxPos++, (((SCREEN_WIDTH/2)-8) - (i * 8)) * 4,
+                                                 ((SCREEN_HEIGHT-8) - (j * 8)) * 4,
+                                                 ((SCREEN_WIDTH/2) - (i * 8)) * 4,
+                                                 (SCREEN_HEIGHT - (j * 8)) * 4,
                                                  G_TX_RENDERTILE,
                                                  (t * 8 + 7) * 32, 7 * 32, -0x0400, -0x0400);
         }
