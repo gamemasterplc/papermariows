@@ -1326,7 +1326,7 @@ if __name__ == "__main__":
         help="Compile nonmatching code. Combine with --debug for more detailed debug info",
     )
     parser.add_argument(
-        "--shift",
+        "--no-shift",
         action="store_true",
         help="Build a shiftable version of the game (non-matching)",
     )
@@ -1342,7 +1342,8 @@ if __name__ == "__main__":
         help="Convert map binaries to C as part of the build process",
     )
     args = parser.parse_args()
-
+    args.shift = not args.no_shift
+    
     exec_shell(["make", "-C", str(ROOT / args.splat)])
 
     # on macOS, /usr/bin/cpp defaults to clang rather than gcc (but we need gcc's)
