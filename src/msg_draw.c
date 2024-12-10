@@ -687,7 +687,7 @@ void appendGfx_message(MessagePrintState* printer, s16 posX, s16 posY, u16 addit
                         break;
                     case MSG_STYLE_SIGN:
                     case MSG_STYLE_LAMPPOST:
-                        msg_drawState->textStartPos[0] = 18;
+                        msg_drawState->textStartPos[0] = (SCREEN_WIDTH/2)-142;
                         msg_drawState->textStartPos[1] = MSG_SIGN_TEXT_Y;
                         printer->windowBasePos.x = 20 + MSG_SIGN_OFFSET_X;
                         printer->windowBasePos.y = 28;
