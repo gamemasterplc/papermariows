@@ -155,7 +155,7 @@ MenuWindowBP filemenu_main_windowBPs[] = {
     {
         .windowID = WIN_FILES_STEREO,
         .unk_01 = 0,
-        .pos = { .x = -2, .y = 6 },
+        .pos = { .x = (((SCREEN_WIDTH*29)/320)-31)-((SCREEN_WIDTH/2)-160), .y = 6 },
         .width = 68,
         .height = 20,
         .priority = WINDOW_PRIORITY_0,
@@ -169,7 +169,7 @@ MenuWindowBP filemenu_main_windowBPs[] = {
     {
         .windowID = WIN_FILES_MONO,
         .unk_01 = 0,
-        .pos = { .x = 221, .y = 6 },
+        .pos = { .x = (((SCREEN_WIDTH*291)/320)-68)-((SCREEN_WIDTH/2)-160), .y = 6 },
         .width = 68,
         .height = 20,
         .priority = WINDOW_PRIORITY_0,
@@ -183,7 +183,7 @@ MenuWindowBP filemenu_main_windowBPs[] = {
     {
         .windowID = WIN_FILES_OPTION_LEFT,
         .unk_01 = 0,
-        .pos = { .x = 5, .y = 171 },
+        .pos = { .x = (((SCREEN_WIDTH*29)/320)-24)-((SCREEN_WIDTH/2)-160), .y = 171 },
         .width = 88,
         .height = 16,
         .priority = WINDOW_PRIORITY_0,
@@ -211,7 +211,7 @@ MenuWindowBP filemenu_main_windowBPs[] = {
     {
         .windowID = WIN_FILES_OPTION_RIGHT,
         .unk_01 = 0,
-        .pos = { .x = 195, .y = 171 },
+        .pos = { .x = (((SCREEN_WIDTH*291)/320)-96)-((SCREEN_WIDTH/2)-160), .y = 171 },
         .width = 88,
         .height = 16,
         .priority = WINDOW_PRIORITY_0,

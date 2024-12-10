@@ -1337,12 +1337,13 @@ Gfx N(gfx_setup_story_viewport)[] = {
 };
 
 void N(draw_foreground_bowser_silhouette)(void) {
-    s32 x = N(StoryGraphicsPtr)->silhouettePosX << 0x10;
-    s32 y = N(StoryGraphicsPtr)->silhouettePosY << 0x10;
-
+    s32 x = N(StoryGraphicsPtr)->silhouettePosX;
+    s32 y = N(StoryGraphicsPtr)->silhouettePosY;
+    
+    x = (((x+64)*SCREEN_WIDTH)/320)-64;
     if (N(StoryGraphicsPtr)->workerID != 0) {
         N(appendGfx_image_strips)(
-            x >> 0x10, y >> 0x10,
+            x, y,
             N(StoryGraphicsPtr)->imgBowser, N(StoryGraphicsPtr)->palBowser,
             255, 128, 128, 16
         );

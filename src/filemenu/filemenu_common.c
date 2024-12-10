@@ -98,8 +98,8 @@ s16 D_filemenu_8024EB80[] = {
 s32 D_80249D4C = 0; // padding?
 Vp D_80249D60 = {
     .vp = {
-        .vscale = { 640, 480, 511, 0},
-        .vtrans = { 640, 480, 511, 0},
+        .vscale = { (SCREEN_WIDTH/2)*4, (SCREEN_HEIGHT/2)*4, 511, 0},
+        .vtrans = { (SCREEN_WIDTH/2)*4, (SCREEN_HEIGHT/2)*4, 511, 0},
     }
 };
 f32 D_80249D70[15] = { 7.0f, 12.5f, 13.0f, 14.5f, 14.0f, 13.0f, 11.5f, 9.5f, 7.5f, 5.5f, 3.5f, 2.0f, 1.0f, 0.5f, 0.0f };
@@ -108,7 +108,7 @@ MenuWindowBP filemenu_common_windowBPs[3] = {
     {
         .windowID = WIN_FILES_MAIN,
         .pos = {
-            .x = 16,
+            .x = (SCREEN_WIDTH/2)-144,
             .y = 24,
         },
         .width = 288,
@@ -358,7 +358,6 @@ void func_8024330C(
 ) {
     Window* window = &gWindows[windowIdx];
     s32 updateCounter = window->updateCounter;
-
     if (updateCounter == 0) {
         window->flags &= ~WINDOW_FLAG_HIDDEN;
     }
@@ -388,9 +387,11 @@ void filemenu_update_show_name_input(
     }
 
     if (updateCounter < ARRAY_COUNT(D_80249BDC)) {
-        *posX += D_80249BDC[updateCounter];
+        int ofs = (D_80249BDC[updateCounter]*SCREEN_WIDTH)/320;
+        *posX += ofs;
     } else {
-        *posX += D_80249BDC[ARRAY_COUNT(D_80249BDC) - 1];
+        int ofs = (D_80249BDC[ARRAY_COUNT(D_80249BDC) - 1]*SCREEN_WIDTH)/320;
+        *posX += ofs;
         window->flags &= ~WINDOW_FLAG_INITIAL_ANIMATION;
     }
 }
@@ -412,9 +413,11 @@ void filemenu_update_show_options_left(
     }
 
     if (updateCounter < ARRAY_COUNT(D_80249BFC)) {
-        *posX -= D_80249BFC[updateCounter];
+        int ofs = (D_80249BFC[updateCounter]*SCREEN_WIDTH)/320;
+        *posX -= ofs;
     } else {
-        *posX -= D_80249BFC[ARRAY_COUNT(D_80249BFC) - 1];
+        int ofs = (D_80249BFC[ARRAY_COUNT(D_80249BFC) - 1]*SCREEN_WIDTH)/320;
+        *posX -= ofs;
         window->flags &= ~WINDOW_FLAG_INITIAL_ANIMATION;
     }
 }
@@ -436,9 +439,11 @@ void filemenu_update_show_options_right(
     }
 
     if (updateCounter < ARRAY_COUNT(D_80249C1C)) {
-        *posX += D_80249C1C[updateCounter];
+        int ofs = (D_80249C1C[updateCounter]*SCREEN_WIDTH)/320;
+        *posX += ofs;
     } else {
-        *posX += D_80249C1C[ARRAY_COUNT(D_80249C1C) - 1];
+        int ofs = (D_80249C1C[ARRAY_COUNT(D_80249C1C) - 1]*SCREEN_WIDTH)/320;
+        *posX += ofs;
         window->flags &= ~WINDOW_FLAG_INITIAL_ANIMATION;
     }
 }
@@ -525,9 +530,11 @@ void filemenu_update_hidden_name_input(
     s32 updateCounter = window->updateCounter;
 
     if (updateCounter < ARRAY_COUNT(D_80249C90)) {
-        *posX -= D_80249C90[updateCounter];
+        int ofs = (D_80249C90[updateCounter]*SCREEN_WIDTH)/320;
+        *posX -= ofs;
     } else {
-        *posX -= D_80249C90[ARRAY_COUNT(D_80249C90) - 1];
+        int ofs = (D_80249C90[ARRAY_COUNT(D_80249C90) - 1]*SCREEN_WIDTH)/320;
+        *posX -= ofs;
         window->flags &= ~WINDOW_FLAG_INITIAL_ANIMATION;
         window->flags |= WINDOW_FLAG_HIDDEN;
     }
@@ -546,9 +553,11 @@ void filemenu_update_hidden_options_left(
     s32 updateCounter = window->updateCounter;
 
     if (updateCounter < ARRAY_COUNT(D_80249CA4)) {
-        *posX += D_80249CA4[updateCounter];
+        int ofs = (D_80249CA4[updateCounter]*SCREEN_WIDTH)/320;
+        *posX += ofs;
     } else {
-        *posX += D_80249CA4[ARRAY_COUNT(D_80249CA4) - 1];
+        int ofs = (D_80249CA4[ARRAY_COUNT(D_80249CA4) - 1]*SCREEN_WIDTH)/320;
+        *posX += ofs;
         window->flags &= ~WINDOW_FLAG_INITIAL_ANIMATION;
         window->flags |= WINDOW_FLAG_HIDDEN;
     }
@@ -567,9 +576,11 @@ void filemenu_update_hidden_options_right(
     s32 updateCounter = window->updateCounter;
 
     if (updateCounter < ARRAY_COUNT(D_80249CB8)) {
-        *posX -= D_80249CB8[updateCounter];
+        int ofs = (D_80249CB8[updateCounter]*SCREEN_WIDTH)/320;
+        *posX -= ofs;
     } else {
-        *posX -= D_80249CB8[ARRAY_COUNT(D_80249CB8) - 1];
+        int ofs = (D_80249CB8[ARRAY_COUNT(D_80249CB8) - 1]*SCREEN_WIDTH)/320;
+        *posX -= ofs;
         window->flags &= ~WINDOW_FLAG_INITIAL_ANIMATION;
         window->flags |= WINDOW_FLAG_HIDDEN;
     }
@@ -733,7 +744,7 @@ void filemenu_update_show_name_confirm(
     gDPSetPrimColor(gMainGfxPos++, 0, 0, 0, 0, 0, 140);
 
     if (updateCounter < 10) {
-        s32 x = updateCounter * 16;
+        s32 x = (updateCounter * SCREEN_WIDTH)/20;
         s32 y = updateCounter * 12;
         filemenu_draw_rect(0, 0, SCREEN_WIDTH * 4, y * 4, 0, 0, 0, 0, 0);
         filemenu_draw_rect(0, (SCREEN_HEIGHT - y) * 4, SCREEN_WIDTH * 4, SCREEN_HEIGHT * 4, 0, 0, 0, 0, 0);
@@ -771,7 +782,7 @@ void filemenu_update_hidden_name_confirm(
         gDPSetCombineMode(gMainGfxPos++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
         gDPSetRenderMode(gMainGfxPos++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
         gDPSetPrimColor(gMainGfxPos++, 0, 0, 0, 0, 0, 140 - updateCounter * 14);
-        filemenu_draw_rect(0, 0, 1280, 960, 0, 0, 0, 0, 0);
+        filemenu_draw_rect(0, 0, SCREEN_WIDTH*4, SCREEN_HEIGHT*4, 0, 0, 0, 0, 0);
         *posY -= D_80249D48[updateCounter];
     } else {
         window->flags &= ~WINDOW_FLAG_INITIAL_ANIMATION;
@@ -958,7 +969,8 @@ void filemenu_draw_contents_copy_arrow(MenuPanel* menu, s32 baseX, s32 baseY, s3
             endZ = 150.0f;
             break;
     }
-
+    startX += ((SCREEN_WIDTH/2)-160);
+    endX += ((SCREEN_WIDTH/2)-160);
     rotAngle = -atan2(startX, startZ, endX, endZ) - 90.0f;
 
     gSPViewport(gMainGfxPos++, &D_80249D60);

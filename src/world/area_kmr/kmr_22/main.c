@@ -41,19 +41,19 @@ API_CALLABLE(N(ManageEffects)) {
         N(ChapterEffectTime) = 0;
     }
 
-    x = xOffset + 117;
+    x = xOffset + (((SCREEN_WIDTH*280)/320)-163);
     if (N(ChapterEffectTime) >= 0) {
         if (N(ChapterEffectTime) < 2 * CHUNK_SIZE) {
             x -= N(AnimTextOffsets)[N(ChapterEffectTime)];
         }
     } else {
-        x = xOffset - 193;
+        x = xOffset + (((SCREEN_WIDTH*280)/320)-473);
     }
     y = 58;
     N(ChapterEffect)->data.chapterChange->chapterPos.x = x;
     N(ChapterEffect)->data.chapterChange->chapterPos.y = y;
 
-    x = xOffset + 117;
+    x = xOffset + (((SCREEN_WIDTH*280)/320)-163);
     if (N(ChapterEffectTime) >= CHUNK_SIZE) {
         if (N(ChapterEffectTime) < 3 * CHUNK_SIZE) {
             y -= N(AnimTextOffsets)[N(ChapterEffectTime) - CHUNK_SIZE];
@@ -64,13 +64,13 @@ API_CALLABLE(N(ManageEffects)) {
     N(ChapterEffect)->data.chapterChange->endOfPos.x = x;
     N(ChapterEffect)->data.chapterChange->endOfPos.y = y;
 
-    x = 280;
+    x = (SCREEN_WIDTH*280)/320;
     if (N(ChapterEffectTime) >= 2 * CHUNK_SIZE) {
         if (N(ChapterEffectTime) < 4 * CHUNK_SIZE) {
             x += N(AnimTextOffsets)[N(ChapterEffectTime) - 2 * CHUNK_SIZE];
         }
     } else {
-        x = 590;
+        x = ((SCREEN_WIDTH*280)/320)+310;
     }
     y = 90;
     N(ChapterEffect)->data.chapterChange->unk_40 = x;

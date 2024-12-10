@@ -166,20 +166,19 @@ void underwater_appendGfx(void* effect) {
     gSPSegment(gMainGfxPos++, 0x09, VIRTUAL_TO_PHYSICAL(((EffectInstance*)effect)->shared->graphics));
     gDPSetColorImage(gMainGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, nuGfxZBuffer);
     gSPDisplayList(gMainGfxPos++, D_09000528_3B9F98);
-
     // copy image from framebuffer to zbuffer
-    for (i = 0; i < 40; i++) {
+    for (i = 0; i < SCREEN_HEIGHT/SCREEN_COPY_TILE_HEIGHT; i++) {
         gDPLoadTextureTile(
-            gMainGfxPos++, nuGfxCfb_ptr + SCREEN_WIDTH * i * 6,
+            gMainGfxPos++, nuGfxCfb_ptr + SCREEN_WIDTH * i * SCREEN_COPY_TILE_HEIGHT,
             G_IM_FMT_RGBA, G_IM_SIZ_16b,
-            SCREEN_WIDTH, 6,
+            SCREEN_WIDTH, SCREEN_COPY_TILE_HEIGHT,
             0, 0, SCREEN_WIDTH - 1, 5, 0,
             G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP,
             G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         gSPTextureRectangle(
             gMainGfxPos++,
-            0 * 4, (i * 6) * 4,
-            (SCREEN_WIDTH - 1) * 4, (i * 6 + 5) * 4,
+            0 * 4, (i * SCREEN_COPY_TILE_HEIGHT) * 4,
+            (SCREEN_WIDTH - 1) * 4, (i * SCREEN_COPY_TILE_HEIGHT + (SCREEN_COPY_TILE_HEIGHT-1)) * 4,
             G_TX_RENDERTILE, 0, 0, 0x1000, 0x0400);
         gDPPipeSync(gMainGfxPos++);
     }
@@ -218,7 +217,7 @@ void underwater_appendGfx(void* effect) {
             dyBottom = 0;
         }
 
-        for (i = 0; i < 18; i++) {
+        for (i = 0; i < ((SCREEN_WIDTH+15)/16)-2; i++) {
             x = i * 16 + 16;
             edgeX = FALSE;
 
@@ -229,7 +228,7 @@ void underwater_appendGfx(void* effect) {
                 dxLeft = 0;
             }
 
-            if (i == 17) {
+            if (i == ((SCREEN_WIDTH+15)/16)-3) {
                 dxRight = 4;
                 edgeX = TRUE;
             } else {
