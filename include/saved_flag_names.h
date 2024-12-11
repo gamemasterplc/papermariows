@@ -460,7 +460,7 @@ enum GameFlags {
     GF_Unused_TIK_44                            = GameFlag(0x1C8),
     GF_Unused_TIK_45                            = GameFlag(0x1C9),
     GF_Unused_TIK_46                            = GameFlag(0x1CA),
-    GF_Unused_KGR_00                            = GameFlag(0x1CB),
+    GF_KGR_EraseDarkness                        = GameFlag(0x1CB),
     GF_Unused_KGR_01                            = GameFlag(0x1CC),
     GF_Unused_KGR_02                            = GameFlag(0x1CD),
     GF_Unused_KGR_03                            = GameFlag(0x1CE),
