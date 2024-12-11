@@ -7,7 +7,7 @@ API_CALLABLE(N(WidenCameraFOV)) {
 
 EvtScript N(EVS_Main) = {
     Call(SetCamPerspective, CAM_DEFAULT, CAM_UPDATE_FROM_ZONE, 25, 16, 4096)
-    Call(SetCamViewport, CAM_DEFAULT, 15, 28, 290, 128)
+    Call(SetCamViewport, CAM_DEFAULT, (SCREEN_WIDTH/2)-145, 28, 290, 128)
     Call(SetCamBGColor, CAM_DEFAULT, 0, 0, 0)
     Call(SetCamEnabled, CAM_DEFAULT, TRUE)
     Call(SetCamLeadPlayer, CAM_DEFAULT, FALSE)

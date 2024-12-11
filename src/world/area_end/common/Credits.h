@@ -4,7 +4,7 @@
 #include "common.h"
 #include "message_ids.h"
 
-#define STANDARD_POS_X              160
+#define STANDARD_POS_X              (SCREEN_WIDTH/2)
 
 #if VERSION_PAL
 #define STANDARD_APPEAR_TIME        33

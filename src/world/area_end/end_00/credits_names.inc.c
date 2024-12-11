@@ -44,7 +44,7 @@ CreditsEntry N(Credits_Names)[] = {
     },
     {
         .msgID = MSG_Credits_002F,
-        .posX = 159,
+        .posX = STANDARD_POS_X-1,
         .posY = 191,
         .palette = 1,
         .appearMode = CREDITS_APPEAR_MODE_00,

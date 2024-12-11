@@ -100,8 +100,8 @@ CreditsPairOffset N(Font3Patterns)[] = {
 
 Vp N(CreditsViewport) = {
     .vp = {
-        .vscale = { 640, 480, 511, 0 },
-        .vtrans = { 640, 480, 511, 0 }
+        .vscale = { (SCREEN_WIDTH/2)*4, (SCREEN_HEIGHT/2)*4, 511, 0 },
+        .vtrans = { (SCREEN_WIDTH/2)*4, (SCREEN_HEIGHT/2)*4, 511, 0 }
     }
 };
 
@@ -748,7 +748,7 @@ void N(credits_worker_render)(void) {
     s32 i;
 
     gSPViewport(gMainGfxPos++, &N(CreditsViewport));
-    guOrtho(projMtx, 0.0f, 320.0f, -240.0f, 0.0f, -100.0f, 100.0f, 1.0f);
+    guOrtho(projMtx, 0.0f, SCREEN_WIDTH, -SCREEN_HEIGHT, 0.0f, -100.0f, 100.0f, 1.0f);
     gSPMatrix(gMainGfxPos++, OS_PHYSICAL_TO_K0(projMtx), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gDPPipeSync(gMainGfxPos++);
     gSPClearGeometryMode(gMainGfxPos++, G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH);
