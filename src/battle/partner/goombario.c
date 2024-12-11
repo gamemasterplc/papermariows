@@ -340,7 +340,7 @@ API_CALLABLE(N(GetTattleCamPos)) {
 }
 
 API_CALLABLE(N(OpenTattleWindow)) {
-    N(TattleWindowEffect) = fx_tattle_window(0, 206, 144, 0, 1.0f, 0);
+    N(TattleWindowEffect) = fx_tattle_window(0, SCREEN_WIDTH-114, 144, 0, 1.0f, 0);
 
     return ApiStatus_DONE2;
 }
@@ -1445,7 +1445,7 @@ EvtScript N(EVS_Move_Tattle) = {
     Call(SetCamEnabled, CAM_TATTLE, TRUE)
     Call(SetCamNoDraw, CAM_TATTLE, FALSE)
     Call(SetCamPerspective, CAM_TATTLE, CAM_UPDATE_NO_INTERP, 25, 16, 1024)
-    Call(SetCamViewport, CAM_TATTLE, 137, 95, 138, 99)
+    Call(SetCamViewport, CAM_TATTLE, SCREEN_WIDTH-183, 95, 138, 99)
     Call(GetOwnerTarget, LVarA, LVarB)
     Call(GetActorPos, LVarA, LVar0, LVar1, LVar2)
     Call(SetGoalPos, ACTOR_PARTNER, LVar0, LVar1, LVar2)

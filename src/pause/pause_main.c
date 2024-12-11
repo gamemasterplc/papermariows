@@ -125,8 +125,8 @@ s32 gPauseTutorialSpriteAnims[][4] = {
 };
 Vp gPauseTutorialViewport = {
     .vp = {
-        .vscale = { 640, 480, 511, 0 },
-        .vtrans = { 640, 480, 511, 0 },
+        .vscale = { (SCREEN_WIDTH/2)*4, (SCREEN_HEIGHT/2)*4, 511, 0 },
+        .vtrans = { (SCREEN_WIDTH/2)*4, (SCREEN_HEIGHT/2)*4, 511, 0 },
     }
 };
 s32 gPauseTutorialScrollPos = 0;
@@ -134,7 +134,7 @@ MenuWindowBP gPauseCommonWindowsBPs[] = {
     {
         .windowID = WIN_PAUSE_MAIN,
         .unk_01 = 0,
-        .pos = { .x = 12, .y = 20 },
+        .pos = { .x = (SCREEN_WIDTH/2)-148, .y = 20 },
         .width = 296,
         .height = 200,
         .priority = 0,
@@ -555,7 +555,7 @@ void pause_tutorial_draw_contents(MenuPanel* menu, s32 baseX, s32 baseY, s32 wid
     pause_draw_rect(baseX * 4, (baseY + 12) * 4, (baseX + width) * 4, (baseY + height) * 4, 0, 0, 0, 0, 0);
     gDPPipeSync(gMainGfxPos++);
     gSPViewport(gMainGfxPos++, &gPauseTutorialViewport);
-    guOrthoF(matrix1, 0.0f, 320.0f, 240.0f, 0.0f, -100.0f, 100.0f, 1.0f);
+    guOrthoF(matrix1, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f, -100.0f, 100.0f, 1.0f);
     guMtxF2L(matrix1, &gDisplayContext->matrixStack[gMatrixListPos]);
     gSPMatrix(gMainGfxPos++, &gDisplayContext->matrixStack[gMatrixListPos++], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
@@ -853,7 +853,7 @@ void pause_draw_rect(s32 ulx, s32 uly, s32 lrx, s32 lry, s32 tileIdx, s32 uls, s
     if (ulx <= -2688 || uly <= -2688 || lrx <= 0 || lry <= 0) {
         return;
     }
-    if (ulx >= 1280 || uly >= 960 || lrx >= 2688 || lry >= 2688) {
+    if (ulx >= (SCREEN_WIDTH*4) || uly >= (SCREEN_HEIGHT*4) || lrx >= 2688 || lry >= 2688) {
         return;
     }
     gSPScisTextureRectangle(gMainGfxPos++, ulx, uly, lrx, lry, tileIdx, uls, ult, dsdx, dtdy);

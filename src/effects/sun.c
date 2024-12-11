@@ -172,7 +172,8 @@ void sun_appendGfx(void* argEffect) {
         guMtxF2L(mtx, &gDisplayContext->matrixStack[gMatrixListPos]);
         gSPMatrix(gMainGfxPos++, &gDisplayContext->matrixStack[gMatrixListPos++],
             G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-        guTranslateF(mtx, 0.0f, 0.0f, 0.0f);
+        guScaleF(mtx, 320.0f/SCREEN_WIDTH, 240.0f/SCREEN_HEIGHT, 1.0f);
+        mtx[3][0] = ((SCREEN_WIDTH/2)-160)*10;
         guMtxF2L(mtx, &gDisplayContext->matrixStack[gMatrixListPos]);
         gSPMatrix(gMainGfxPos++, &gDisplayContext->matrixStack[gMatrixListPos++],
             G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);

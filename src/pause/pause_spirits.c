@@ -26,8 +26,8 @@ static s32 gPauseSpiritsNumSpirits;
 
 Vp gPauseSpiritsViewport = {
     .vp = {
-        .vscale = { 640, 480, 511, 0 },
-        .vtrans = { 640, 480, 511, 0 },
+        .vscale = { (SCREEN_WIDTH/2)*4, (SCREEN_HEIGHT/2)*4, 511, 0 },
+        .vtrans = { (SCREEN_WIDTH/2)*4, (SCREEN_HEIGHT/2)*4, 511, 0 },
     }
 };
 s32 gPauseSpiritsSpriteAnims[][4] = {
@@ -169,7 +169,7 @@ void pause_spirits_draw_contents(MenuPanel* menu, s32 baseX, s32 baseY, s32 widt
         gDPPipeSync(gMainGfxPos++);
     }
 
-    guOrthoF(matrix1, 0.0f, 320.0f, 240.0f, 0.0f, -1000.0f, 1000.0f, 1.0f);
+    guOrthoF(matrix1, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f, -1000.0f, 1000.0f, 1.0f);
     guMtxF2L(matrix1, &gDisplayContext->matrixStack[gMatrixListPos]);
     gSPMatrix(gMainGfxPos++, &gDisplayContext->matrixStack[gMatrixListPos++], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     guTranslateF(matrix1, 0.0f, 0.0f, 0.0f);

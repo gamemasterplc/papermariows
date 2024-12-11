@@ -72,8 +72,8 @@ HudScript* gPausePartnersHudScripts[][8] = {
 
 Vp gPausePartnersViewport = {
     .vp = {
-        .vscale = { 640, 480, 511, 0 },
-        .vtrans = { 640, 480, 511, 0 },
+        .vscale = { (SCREEN_WIDTH/2)*4, (SCREEN_HEIGHT/2)*4, 511, 0 },
+        .vtrans = { (SCREEN_WIDTH/2)*4, (SCREEN_HEIGHT/2)*4, 511, 0 },
     }
 };
 
@@ -325,7 +325,7 @@ void pause_partners_draw_contents(MenuPanel* menu, s32 baseX, s32 baseY, s32 wid
     s32 portraitIndex;
 
     gSPViewport(gMainGfxPos++, &gPausePartnersViewport);
-    guOrthoF(matrix, 0.0f, 320.0f, 240.0f, 0.0f, -100.0f, 100.0f, 1.0f);
+    guOrthoF(matrix, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f, -100.0f, 100.0f, 1.0f);
     guMtxF2L(matrix, &gDisplayContext->matrixStack[gMatrixListPos]);
     gSPMatrix(gMainGfxPos++, &gDisplayContext->matrixStack[gMatrixListPos++], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     guTranslateF(matrix, 0.0f, 0.0f, 0.0f);
@@ -384,7 +384,7 @@ void pause_partners_draw_contents(MenuPanel* menu, s32 baseX, s32 baseY, s32 wid
         }
 
         if (gPauseMenuCurrentTab == currentTab && gPausePartnersLevel == 0) {
-            pause_draw_menu_label(PAUSE_LBL_ABILITIES, 18, 158);
+            pause_draw_menu_label(PAUSE_LBL_ABILITIES, (SCREEN_WIDTH/2)-142, 158);
         }
     }
 
