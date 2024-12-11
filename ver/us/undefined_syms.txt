@@ -6,7 +6,7 @@ heap_battleHead = gFrameBuf2;
 
 overlays_start = 0x802DC500;
 
-seg_evt_start = world_use_item_VRAM_END+0x50;
+seg_evt_start = world_use_item_VRAM_END+0x70;
 
 fx_sun_undeclared = fx_sun;
 

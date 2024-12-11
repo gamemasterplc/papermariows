@@ -821,17 +821,17 @@ void btl_state_update_celebration(void) {
             } else {
                 hid = hud_element_create(&HES_level_up_heart);
                 LevelUpStatEmblemIDs[0] = hid;
-                hud_element_set_render_pos(hid, 310, 140);
+                hud_element_set_render_pos(hid, SCREEN_WIDTH-10, 140);
                 hud_element_set_flags(hid, HUD_ELEMENT_FLAG_80);
 
                 hid = hud_element_create(&HES_level_up_flower);
                 LevelUpStatEmblemIDs[1] = hid;
-                hud_element_set_render_pos(hid, 158, 340);
+                hud_element_set_render_pos(hid, (SCREEN_WIDTH/2)-2, 340);
                 hud_element_set_flags(hid, HUD_ELEMENT_FLAG_80);
 
                 hid = hud_element_create(&HES_level_up_leaves);
                 LevelUpStatEmblemIDs[3] = hid;
-                hud_element_set_render_pos(hid, 158, 340);
+                hud_element_set_render_pos(hid, (SCREEN_WIDTH/2)-2, 340);
                 hud_element_set_flags(hid, HUD_ELEMENT_FLAG_80);
 
                 hid = hud_element_create(&HES_level_up_badge);
@@ -845,13 +845,13 @@ void btl_state_update_celebration(void) {
                 hid = hud_element_create(levelup_stat_scripts[0]);
 #endif
                 LevelUpStatTextIDs[LVL_UP_FP][LVL_UP_TITLE] = hid;
-                hud_element_set_render_pos(hid, 160, 317);
+                hud_element_set_render_pos(hid, SCREEN_WIDTH/2, 317);
                 hud_element_set_flags(hid, HUD_ELEMENT_FLAG_80);
 
                 for (i = 1; i < ARRAY_COUNT(LevelUpStatTextIDs[LVL_UP_FP]); i++) {
                     hid = hud_element_create(HES_LevelUpDigits[LVL_UP_FP][0]);
                     LevelUpStatTextIDs[LVL_UP_FP][i] = hid;
-                    hud_element_set_render_pos(hid, 160, 317);
+                    hud_element_set_render_pos(hid, SCREEN_WIDTH/2, 317);
                     hud_element_set_flags(hid, HUD_ELEMENT_FLAG_80 | HUD_ELEMENT_FLAG_DISABLED);
                 }
 
@@ -861,13 +861,13 @@ void btl_state_update_celebration(void) {
                 hid = hud_element_create(levelup_stat_scripts[1]);
 #endif
                 LevelUpStatTextIDs[LVL_UP_HP][LVL_UP_TITLE] = hid;
-                hud_element_set_render_pos(hid, 312, 117);
+                hud_element_set_render_pos(hid, SCREEN_WIDTH-8, 117);
                 hud_element_set_flags(hid, HUD_ELEMENT_FLAG_80);
 
                 for (i = 1; i < ARRAY_COUNT(LevelUpStatTextIDs[LVL_UP_HP]); i++) {
                     hid = hud_element_create(HES_LevelUpDigits[LVL_UP_HP][0]);
                     LevelUpStatTextIDs[LVL_UP_HP][i] = hid;
-                    hud_element_set_render_pos(hid, 312, 117);
+                    hud_element_set_render_pos(hid, SCREEN_WIDTH-8, 117);
                     hud_element_set_flags(hid, HUD_ELEMENT_FLAG_80 | HUD_ELEMENT_FLAG_DISABLED);
                 }
 
@@ -1089,7 +1089,7 @@ void btl_state_update_celebration(void) {
 
                 LevelUpSpotlightID = hid = hud_element_create(&HES_ProjectorBeam);
                 hud_element_create_transform_B(hid);
-                hud_element_set_render_pos(hid, 156, 13);
+                hud_element_set_render_pos(hid, (SCREEN_WIDTH/2)-4, 13);
                 hud_element_set_tint(hid, 255, 255, 255);
                 hud_element_set_transform_rotation_pivot(hid, 0, -35);
                 hud_element_set_transform_rotation(hid, 0.0f, 0.0f, 180.0f);
@@ -1113,13 +1113,13 @@ void btl_state_update_celebration(void) {
         case BTL_SUBSTATE_CELEBRATE_LEVEL_UP_SHOW_HUD:
             hid = LevelUpStatEmblemIDs[0];
             hud_element_get_render_pos(hid, &x, &y);
-            x -= 20;
+            x -= ((SCREEN_WIDTH/2)+40)/10;
             hud_element_set_render_pos(hid, x, y);
 
             for (i = 0; i < ARRAY_COUNT(LevelUpStatTextIDs[LVL_UP_HP]); i++) {
                 hid = LevelUpStatTextIDs[LVL_UP_HP][i];
                 hud_element_get_render_pos(hid, &x, &y);
-                x -= 20;
+                x -= ((SCREEN_WIDTH/2)+40)/10;
                 hud_element_set_render_pos(hid, x, y);
             }
 
@@ -1142,13 +1142,13 @@ void btl_state_update_celebration(void) {
 
             hid = LevelUpStatEmblemIDs[2];
             hud_element_get_render_pos(hid, &x, &y);
-            x += 20;
+            x += ((SCREEN_WIDTH/2)+40)/10;
             hud_element_set_render_pos(hid, x, y);
 
             for (i = 0; i < ARRAY_COUNT(LevelUpStatTextIDs[LVL_UP_BP]); i++) {
                 hid = LevelUpStatTextIDs[LVL_UP_BP][i];
                 hud_element_get_render_pos(hid, &x, &y);
-                x += 20;
+                x += ((SCREEN_WIDTH/2)+40)/10;
                 hud_element_set_render_pos(hid, x, y);
             }
 
@@ -1160,11 +1160,33 @@ void btl_state_update_celebration(void) {
                 y = 186;
                 set_window_properties(WIN_BTL_DESC_BOX, 32, 186, 242, 32, WINDOW_PRIORITY_20, draw_content_level_up_textbox, NULL, -1);
 #else
-                x = 20;
+                x = (SCREEN_WIDTH/2)-140;
                 y = 186;
-                set_window_properties(WIN_BTL_DESC_BOX, 20, 186, 280, 32, WINDOW_PRIORITY_20, draw_content_level_up_textbox, NULL, -1);
+                set_window_properties(WIN_BTL_DESC_BOX, (SCREEN_WIDTH/2)-140, 186, 280, 32, WINDOW_PRIORITY_20, draw_content_level_up_textbox, NULL, -1);
 #endif
                 set_window_update(WIN_BTL_DESC_BOX, WINDOW_UPDATE_SHOW);
+                hid = LevelUpStatEmblemIDs[0];
+                hud_element_get_render_pos(hid, &x, &y);
+                x -= ((SCREEN_WIDTH/2)+40)%10;
+                hud_element_set_render_pos(hid, x, y);
+
+                for (i = 0; i < ARRAY_COUNT(LevelUpStatTextIDs[LVL_UP_HP]); i++) {
+                    hid = LevelUpStatTextIDs[LVL_UP_HP][i];
+                    hud_element_get_render_pos(hid, &x, &y);
+                    x -= ((SCREEN_WIDTH/2)+40)%10;
+                    hud_element_set_render_pos(hid, x, y);
+                }
+                hid = LevelUpStatEmblemIDs[2];
+                hud_element_get_render_pos(hid, &x, &y);
+                x += ((SCREEN_WIDTH/2)+40)%10;
+                hud_element_set_render_pos(hid, x, y);
+
+                for (i = 0; i < ARRAY_COUNT(LevelUpStatTextIDs[LVL_UP_BP]); i++) {
+                    hid = LevelUpStatTextIDs[LVL_UP_BP][i];
+                    hud_element_get_render_pos(hid, &x, &y);
+                    x += ((SCREEN_WIDTH/2)+40)%10;
+                    hud_element_set_render_pos(hid, x, y);
+                }
                 gBattleSubState = BTL_SUBSTATE_CELEBRATE_LEVEL_UP_CHOOSE;
             }
             break;
@@ -1314,13 +1336,13 @@ void btl_state_update_celebration(void) {
 #if VERSION_PAL
             width = get_msg_width(MSG_Menus_CantIncrease, 0) + 32;
             numLines = get_msg_lines(MSG_Menus_CantIncrease) - 1;
-            x = 160 - (width / 2);
+            x = (SCREEN_WIDTH/2) - (width / 2);
             y = 80;
             set_window_properties(WIN_BTL_POPUP, x, y, width, D_PAL_80284614[numLines],
                 WINDOW_PRIORITY_10, draw_content_cant_increase_popup, NULL, -1);
 #else
             width = get_msg_width(MSG_Menus_CantIncrease, 0) + 31;
-            x = 160 - (width / 2);
+            x = (SCREEN_WIDTH/2) - (width / 2);
             y = 80;
             set_window_properties(WIN_BTL_POPUP, x, y, width, 28, WINDOW_PRIORITY_10, draw_content_cant_increase_popup, NULL, -1);
 #endif
@@ -1632,8 +1654,8 @@ void btl_state_draw_celebration(void) {
         case BTL_SUBSTATE_CELEBRATE_LEVEL_UP_UPGRADE:
             LevelUpSelectTextVelX += 2;
             LevelUpSelectTextOffsetX += LevelUpSelectTextVelX;
-            if (LevelUpSelectTextOffsetX > 200) {
-                LevelUpSelectTextOffsetX = 200;
+            if (LevelUpSelectTextOffsetX > ((SCREEN_WIDTH/2)+40)) {
+                LevelUpSelectTextOffsetX = ((SCREEN_WIDTH/2)+40);
                 LevelUpSelectTextVelX = -LevelUpSelectTextVelX / 3; // rebounding
             }
             id = LevelUpSelectTextID;
@@ -1643,8 +1665,8 @@ void btl_state_draw_celebration(void) {
         case BTL_SUBSTATE_CELEBRATE_LEVEL_UP_FADE_OUT:
             LevelUpSelectTextVelX += 4;
             LevelUpSelectTextOffsetX += LevelUpSelectTextVelX;
-            if (LevelUpSelectTextOffsetX > 500) {
-                LevelUpSelectTextOffsetX = 500;
+            if (LevelUpSelectTextOffsetX > (SCREEN_WIDTH+180)) {
+                LevelUpSelectTextOffsetX = (SCREEN_WIDTH+180);
             }
             id = LevelUpSelectTextID;
             hud_element_set_render_pos(id, LevelUpSelectTextOffsetX - 43, 176);

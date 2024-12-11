@@ -484,7 +484,7 @@ EvtScript N(EVS_Scene_EndOfChapter) = {
 #if VERSION_JP
     Call(N(EndOfChapterBounceIn), 64, 0, 55, 60)
 #else
-    Call(N(EndOfChapterBounceIn), 36, 0, 55, 60)
+    Call(N(EndOfChapterBounceIn), (SCREEN_WIDTH/2)-124, 0, 55, 60)
 #endif
     Thread
         Call(N(AddCardAngularVelocity), 0)

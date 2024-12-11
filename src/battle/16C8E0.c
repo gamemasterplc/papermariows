@@ -962,12 +962,12 @@ void btl_update_starpoints_display(void) {
 
     if (gBattleStatus.flags1 & BS_FLAGS1_ACTORS_VISIBLE) {
         if (!(gBattleStatus.flags2 & BS_FLAGS2_AWARDING_STAR_POINTS)) {
-            StarPointsBasePosX = 292;
+            StarPointsBasePosX = SCREEN_WIDTH-28;
             StarPointsBasePosY = 196;
             StarPointsMoveInterpAmt = 6;
             D_8029DA4C = battleStatus->totalStarPoints % 10;
         } else {
-            StarPointsBasePosX += (202 - StarPointsBasePosX) / StarPointsMoveInterpAmt;
+            StarPointsBasePosX += (((SCREEN_WIDTH/2)+42) - StarPointsBasePosX) / StarPointsMoveInterpAmt;
             StarPointsBasePosY += (120 - StarPointsBasePosY) / StarPointsMoveInterpAmt;
             StarPointsMoveInterpAmt--;
             if (StarPointsMoveInterpAmt < 1) {

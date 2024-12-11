@@ -1015,6 +1015,7 @@ void msg_copy_to_print_buffer(MessagePrintState* printer, s32 arg1, s32 arg2) {
                         argQ = *srcBuf++;
                         printer->varImageScreenPos.x = arg << 8 | argQ;
                         printer->varImageScreenPos.y = *srcBuf++;
+                        printer->varImageScreenPos.x += (SCREEN_WIDTH/2)-160;
                         printer->varImgHasBorder = *srcBuf++;
                         printer->varImgFinalAlpha = *srcBuf++;
                         printer->varImgAlphaFadeStep = *srcBuf++;

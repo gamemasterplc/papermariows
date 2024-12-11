@@ -767,11 +767,11 @@ void appendGfx_message(MessagePrintState* printer, s16 posX, s16 posY, u16 addit
                         phi_s2_4 = 0;
                         msg_drawState->textStartPos[0] = 12;
                         msg_drawState->textStartPos[1] = 5;
-                        printer->windowBasePos.x = 40;
+                        printer->windowBasePos.x = (SCREEN_WIDTH/2)-120;
                         printer->windowBasePos.y = 28;
-                        msg_drawState->clipX[0] = 45;
+                        msg_drawState->clipX[0] = (SCREEN_WIDTH/2)-115;
                         msg_drawState->clipY[0] = 32;
-                        msg_drawState->clipX[1] = 272;
+                        msg_drawState->clipX[1] = (SCREEN_WIDTH/2)+112;
                         msg_drawState->clipY[1] = 81;
                         printer->rewindArrowPos.x = msg_drawState->clipX[1] - 21;
                         printer->rewindArrowPos.y = msg_drawState->clipY[1] - 20;
@@ -797,11 +797,11 @@ void appendGfx_message(MessagePrintState* printer, s16 posX, s16 posY, u16 addit
                             }
                             phi_s2_4 = 1;
                         }
-                        msg_draw_frame(40, 28, 240, 58, MSG_STYLE_INSPECT, msg_drawState->framePalette, phi_s2_4, phi_s3_2, phi_s3_2);
+                        msg_draw_frame((SCREEN_WIDTH/2)-120, 28, 240, 58, MSG_STYLE_INSPECT, msg_drawState->framePalette, phi_s2_4, phi_s3_2, phi_s3_2);
                         draw_ci_image_with_clipping(printer->letterBackgroundImg, 150, 105, G_IM_FMT_CI, G_IM_SIZ_4b,
-                                                    printer->letterBackgroundPal, 85, 97, 10, 10, 300, 220, phi_s3_2);
+                                                    printer->letterBackgroundPal, (SCREEN_WIDTH/2)-75, 97, 10, 10, SCREEN_WIDTH-20, SCREEN_HEIGHT-20, phi_s3_2);
                         draw_ci_image_with_clipping(printer->letterContentImg, 70, 95, G_IM_FMT_CI, G_IM_SIZ_8b,
-                                                    printer->letterContentPal, 160, 102, 10, 10, 300, 220, phi_s3_2);
+                                                    printer->letterContentPal, SCREEN_WIDTH/2, 102, 10, 10, SCREEN_WIDTH-20, SCREEN_HEIGHT-20, phi_s3_2);
                         msg_reset_gfx_state();
                         spAE = phi_s3_2 & 0xFF;
                         msg_drawState->drawBufferPos += 2;
@@ -830,7 +830,7 @@ void appendGfx_message(MessagePrintState* printer, s16 posX, s16 posY, u16 addit
                         msg_drawState->drawBufferPos += 2;
                         break;
                     case MSG_STYLE_EPILOGUE:
-                        printer->windowBasePos.x = 60;
+                        printer->windowBasePos.x = ((SCREEN_WIDTH/2)-100);
                         printer->windowBasePos.y = 110;
                         printer->windowSize.x = 200;
                         printer->windowSize.y = 50;
