@@ -79,7 +79,7 @@ Gfx N(Gfx_RecordDisplay_Init)[] = {
 #define RESULT_COL2_X          211
 #define NUMBER_X_OFFSET(x)     144
 #else
-#define RECORD_BOX_POSX        45
+#define RECORD_BOX_POSX        ((SCREEN_WIDTH/2)-115)
 #define RECORD_BOX_WIDTH       230
 #define MSG_RESULT_JUMP_WIDTH  188
 #define MSG_RESULT_SMASH_WIDTH 192

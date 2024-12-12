@@ -964,11 +964,11 @@ API_CALLABLE(MakeShop) {
     hud_element_set_flags(shop->costHID, HUD_ELEMENT_FLAG_80);
     hud_element_clear_flags(shop->costHID, HUD_ELEMENT_FLAG_FILTER_TEX);
     get_worker(create_worker_frontUI(NULL, draw_shop_items));
-    set_window_properties(WIN_SHOP_ITEM_NAME, 100, 66, 120, 28, WINDOW_PRIORITY_0, shop_draw_item_name, NULL, -1);
+    set_window_properties(WIN_SHOP_ITEM_NAME, (SCREEN_WIDTH/2)-60, 66, 120, 28, WINDOW_PRIORITY_0, shop_draw_item_name, NULL, -1);
 #if VERSION_JP
     set_window_properties(WIN_SHOP_ITEM_DESC, 39, 184, 242, 32, WINDOW_PRIORITY_1, shop_draw_item_desc, NULL, -1);
 #else
-    set_window_properties(WIN_SHOP_ITEM_DESC, 32, 184, 256, 32, WINDOW_PRIORITY_1, shop_draw_item_desc, NULL, -1);
+    set_window_properties(WIN_SHOP_ITEM_DESC, (SCREEN_WIDTH/2)-128, 184, 256, 32, WINDOW_PRIORITY_1, shop_draw_item_desc, NULL, -1);
 #endif
     gWindowStyles[10].defaultStyleID = WINDOW_STYLE_9;
     gWindowStyles[11].defaultStyleID = WINDOW_STYLE_3;

@@ -112,7 +112,7 @@ WindowStyleCustom N(IngredientNameWS) = {
 MenuWindowBP N(IngredientWindows)[] = {
     {
         .windowID = WIN_SHOP_ITEM_NAME,
-        .pos = { 100, 66 },
+        .pos = { (SCREEN_WIDTH/2)-60, 66 },
         .width = 120,
         .height = 28,
         .priority = WINDOW_PRIORITY_0,
@@ -129,7 +129,7 @@ MenuWindowBP N(IngredientWindows)[] = {
         .pos = { 39, 184 },
         .width = 242,
 #else
-        .pos = { 32, 184 },
+        .pos = { (SCREEN_WIDTH/2)-128, 184 },
         .width = 256,
 #endif
         .height = 32,
