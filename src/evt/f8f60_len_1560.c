@@ -265,7 +265,7 @@ API_CALLABLE(func_802D4D14) {
     s32 value = evt_get_float_variable(script, *args++);
 
     set_screen_overlay_center(SCREEN_LAYER_FRONT, 0, 12, 20);
-    set_screen_overlay_center(SCREEN_LAYER_FRONT, 1, 308, 220);
+    set_screen_overlay_center(SCREEN_LAYER_FRONT, 1, SCREEN_WIDTH-12, 220);
     set_screen_overlay_params_front(OVERLAY_BLUR, value);
 
     return ApiStatus_DONE2;

@@ -781,6 +781,7 @@ void msg_copy_to_print_buffer(MessagePrintState* printer, s32 arg1, s32 arg2) {
                             printer->windowSize.x = 276;
                         }
 #endif
+                        printer->windowBasePos.x += (SCREEN_WIDTH/2)-160;
                         sfx_play_sound_with_params(SOUND_APPROVE, 0, 0, 0);
                         printer->windowState = MSG_WINDOW_STATE_OPENING;
                         printer->delayFlags |= MSG_DELAY_FLAG_1;

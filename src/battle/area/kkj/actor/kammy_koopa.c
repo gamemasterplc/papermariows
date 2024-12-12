@@ -211,7 +211,7 @@ API_CALLABLE(N(FadeInScreenBlur)) {
     if (isInitialCall) {
         script->functionTemp[0] = 20;
         set_screen_overlay_center(SCREEN_LAYER_BACK, 0, 0, 0);
-        set_screen_overlay_center(SCREEN_LAYER_BACK, 1, 320, 240);
+        set_screen_overlay_center(SCREEN_LAYER_BACK, 1, SCREEN_WIDTH, SCREEN_HEIGHT);
         set_screen_overlay_params_back(OVERLAY_BLUR, 150);
     }
     if (script->functionTemp[0] != 0) {
@@ -220,7 +220,7 @@ API_CALLABLE(N(FadeInScreenBlur)) {
     }
 
     set_screen_overlay_center(SCREEN_LAYER_BACK, 0, 0, 0);
-    set_screen_overlay_center(SCREEN_LAYER_BACK, 1, 320, 240);
+    set_screen_overlay_center(SCREEN_LAYER_BACK, 1, SCREEN_WIDTH, SCREEN_HEIGHT);
     set_screen_overlay_params_back(OVERLAY_NONE, -1);
     return ApiStatus_DONE2;
 }

@@ -2494,7 +2494,7 @@ block_47: // TODO required to match
 #define WD_VAR1 54
 #define WD_VAR2 30
 #define WD_VAR3 30
-#define X_VAR1 20
+#define X_VAR1 ((SCREEN_WIDTH/2)-140)
 #define HT_VAR1 height
 #define WD_VAR4 280
 #endif

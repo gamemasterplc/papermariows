@@ -18,7 +18,7 @@ API_CALLABLE(N(ToadHouse_UpdateScreenOverlay)) {
     s32 type = evt_get_variable(script, *args++);
     s32 zoom = evt_get_variable(script, *args++);
 
-    set_screen_overlay_center(SCREEN_LAYER_FRONT, 0, 190, 145);
+    set_screen_overlay_center(SCREEN_LAYER_FRONT, 0, (SCREEN_WIDTH/2)+30, 145);
     set_screen_overlay_params_front(type, zoom);
     return ApiStatus_DONE2;
 }

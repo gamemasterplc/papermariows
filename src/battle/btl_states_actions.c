@@ -2072,7 +2072,7 @@ void btl_state_update_end_battle(void) {
                 btl_cam_unfreeze();
                 btl_cam_use_preset(BTL_CAM_INTERRUPT);
                 set_screen_overlay_color(SCREEN_LAYER_FRONT, 0, 0, 0);
-                set_screen_overlay_center(SCREEN_LAYER_FRONT, 0, 160, 120);
+                set_screen_overlay_center(SCREEN_LAYER_FRONT, 0, SCREEN_WIDTH/2, 120);
             }
             gBattleSubState = BTL_SUBSTATE_END_BATTLE_FADE_OUT;
             break;
