@@ -64,9 +64,9 @@ void worker_render_title_image(void) {
                            0, 0, 199, 1, 0,
                            G_TX_WRAP, G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         gSPTextureRectangle(gMainGfxPos++,
-            /* ulx */ 60 * 4,
+            /* ulx */ ((SCREEN_WIDTH/2)-100) * 4,
             /* uly */ (i * 2 + TitlePosY) * 4,
-            /* lrx */ 260 * 4,
+            /* lrx */ ((SCREEN_WIDTH/2)+100) * 4,
             /* lry */ ((i * 2 + 2) + TitlePosY) * 4,
             G_TX_RENDERTILE, 0, 0, 1024, 1024);
     }
