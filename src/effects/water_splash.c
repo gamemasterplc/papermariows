@@ -203,8 +203,8 @@ void water_splash_appendGfx(void* effect) {
             temp_t3 = temp_t3 & 0x3F;
         }
 
-        gDPLoadMultiTile(gMainGfxPos++, OS_K0_TO_PHYSICAL(nuGfxCfb_ptr), 0x100, 1, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, 0,
-                         temp_t2 + 0xA0, temp_t3 + 0x78, temp_t2 + 0xBF, temp_t3 + 0x97, 0,
+        gDPLoadMultiTile(gMainGfxPos++, OS_K0_TO_PHYSICAL(nuGfxCfb_ptr), 0x100, 1, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, 0,
+                         temp_t2 + (SCREEN_WIDTH/2), temp_t3 + 0x78, temp_t2 + ((SCREEN_WIDTH/2)+31), temp_t3 + 0x97, 0,
                          G_TX_WRAP, G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
 
         guTranslateF(sp10, data->unk_04.x, data->unk_04.y, data->unk_04.z);

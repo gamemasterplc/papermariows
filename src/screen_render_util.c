@@ -60,7 +60,7 @@ void appendGfx_draw_prev_frame_buffer(s32 x1, s32 y1, s32 x2, s32 y2, f32 alpha)
 
     for (i = 0; i < stripY; i++) {
         gDPLoadTextureTile(gMainGfxPos++, osVirtualToPhysical(prevGfxCfb), G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, SCREEN_COPY_TILE_HEIGHT,
-                           x1, y1 + i * SCREEN_COPY_TILE_HEIGHT, x2 - 1, y1 + i * SCREEN_COPY_TILE_HEIGHT + 5, 0,
+                           x1, y1 + i * SCREEN_COPY_TILE_HEIGHT, x2 - 1, y1 + i * SCREEN_COPY_TILE_HEIGHT + (SCREEN_COPY_TILE_HEIGHT-1), 0,
                            G_TX_WRAP, G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         gSPTextureRectangle(gMainGfxPos++, x1 * 4, (y1 + i * SCREEN_COPY_TILE_HEIGHT) * 4, x2 * 4, (y1 + i * SCREEN_COPY_TILE_HEIGHT + SCREEN_COPY_TILE_HEIGHT) * 4,
                             G_TX_RENDERTILE, x1 * 32, (y1 + i * SCREEN_COPY_TILE_HEIGHT) * 32, 1024, 1024);
