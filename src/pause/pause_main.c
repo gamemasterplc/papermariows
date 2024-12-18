@@ -564,15 +564,15 @@ void pause_tutorial_draw_contents(MenuPanel* menu, s32 baseX, s32 baseY, s32 wid
         matrix2ptr = matrix2;
         switch (i) {
             case 0:
-                guTranslateF(matrix1, 40.0f, 223.0f, 0);
+                guTranslateF(matrix1, ((SCREEN_WIDTH/2)-120), 223.0f, 0);
                 guScaleF(matrix2ptr, -0.8f, 0.8f, 1.0f);
                 break;
             case 1:
-                guTranslateF(matrix1, 60.0f, 223.0f, 0);
+                guTranslateF(matrix1, ((SCREEN_WIDTH/2)-100), 223.0f, 0);
                 guScaleF(matrix2ptr, -0.8f, 0.8f, 1.0f);
                 break;
             default:
-                guTranslateF(matrix1, 280.0f, 223.0f, 0);
+                guTranslateF(matrix1, ((SCREEN_WIDTH/2)+120), 223.0f, 0);
                 guScaleF(matrix2ptr, 0.8f, 0.8f, 1.0f);
                 break;
         }
