@@ -1216,10 +1216,10 @@ s32 popup_menu_update(void) {
             } else {
                 posY = 72;
             }
-            set_window_properties(WIN_BTL_POPUP, 160 - (width / 2), posY, width, 40, WINDOW_PRIORITY_20, popup_draw_already_have_partner, NULL, -1);
+            set_window_properties(WIN_BTL_POPUP, (SCREEN_WIDTH/2) - (width / 2), posY, width, 40, WINDOW_PRIORITY_20, popup_draw_already_have_partner, NULL, -1);
 #else
             width = get_msg_width(MSG_Menus_006B, 0) + 23;
-            set_window_properties(WIN_BTL_POPUP, 160 - (width / 2), 80, width, ALREADY_PARTNER_HEIGHT, WINDOW_PRIORITY_20, popup_draw_already_have_partner, NULL, -1);
+            set_window_properties(WIN_BTL_POPUP, (SCREEN_WIDTH/2) - (width / 2), 80, width, ALREADY_PARTNER_HEIGHT, WINDOW_PRIORITY_20, popup_draw_already_have_partner, NULL, -1);
 #endif
             set_window_update(WIN_BTL_POPUP, WINDOW_UPDATE_SHOW);
             D_8010D644 = 60;
